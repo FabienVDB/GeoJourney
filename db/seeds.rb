@@ -32,7 +32,7 @@ Theme.create!(name: "Urban geology", description: "Explore the geology of built 
 
 puts "Create areas"
 western_alps = Area.create!(name: "Western Alps")
-Area.create!(name: "Central Pyrenees")
+central_pyenees = Area.create!(name: "Central Pyrenees")
 
 puts "Create Western Alps Geotraverse itinerary"
 geotraverse_western_alps = Itinerary.create!(name: "Western Alps Geotraverse",
@@ -43,7 +43,7 @@ geotraverse_western_alps = Itinerary.create!(name: "Western Alps Geotraverse",
 and Eurasian tectonic plates, in which the Alpine Tethys ocean, \
 which was formerly in between these continents, disappeared.")
 file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654004483/GeoJourney/WesternAlpsGeotraverse/WesternAlpsGeotraverse_x7oxej.jpg')
-geotraverse_western_alps.photo.attach(io: file, filename: 'Dinoplagne.jpg', content_type: 'image/jpg')
+geotraverse_western_alps.photo.attach(io: file, filename: 'WesternAlpsGeotraverse.jpg', content_type: 'image/jpg')
 puts "Western Alps Geotraverse itinerary done"
 
 puts "Create plagne site"
@@ -120,5 +120,114 @@ belongs to the thrusting African plate.")
 file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654003307/GeoJourney/WesternAlpsGeotraverse/Zermatt/Zermatt-Matterhorn_mzzzfi.jpg')
 zermatt.photo.attach(io: file, filename: 'Zermatt.jpg', content_type: 'image/jpg')
 puts "Zermatt site done"
+
+puts "Create Oloron Jaca Geotraverse itinerary"
+oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
+                                theme: geotraverse,
+                                area: central_pyenees,
+                                summary: "Cut through the heart of the Pyrenees to understand its formation",
+                                content: "The Pyrenees' present configuration is due to the collision between \
+the microcontinent Iberia and the European Plate. The two continents were approaching each other since \
+100 million years ago and were consequently colliding from 55 to 25 million years ago.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654028906/GeoJourney/OloronJacaPyreneesGeotraverse/oloronJacaGeotraverse_hjbwpl.jpg')
+oloron_jaca.photo.attach(io: file, filename: 'OloronJacaGeotraverse.jpg', content_type: 'image/jpg')
+puts "Oloron Jaca Geotraverse itinerary done"
+
+puts "Create Courrèges site"
+courreges = Site.create!(itinerary: oloron_jaca,
+                         stage: 1,
+                         name: "Courrèges",
+                         summary: "Lava encounters deep water",
+                         location: "Géolval RGTP Courrèges, Avenue d'Ossau, 64680 Ogeu-les-Bains, France",
+                         latitude: 43.161992,
+                         longitude: -0.521164,
+                         duration_in_minutes: 30,
+                         content: "Pillow lavas are lavas that contain characteristic pillow-shaped structures that \
+are attributed to the underwater extrusion of rapidly cooling lava. These lavas infiltrated extensional \
+faults and spread over the sea floor about 110 millions years ago when the Bay of Biscay was opening.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654028388/GeoJourney/OloronJacaPyreneesGeotraverse/Courreges/CourregesPillowLavas_fnmcky.jpg')
+courreges.photo.attach(io: file, filename: 'Courrege.jpg', content_type: 'image/jpg')
+puts "Courrèges site Done"
+
+puts "Create Accous site"
+accous = Site.create!(itinerary: oloron_jaca,
+                      stage: 2,
+                      name: "Accous",
+                      summary: "Europe smashes Spain",
+                      location: "1615 Route Départementale 834, 64490 Accous, France",
+                      latitude: 42.970492,
+                      longitude: -0.609913,
+                      duration_in_minutes: 60,
+                      content: "The site is located right at the geological boundary between the European and \
+the Iberian plates. Upon collision some 40 millions years ago, the European margin overthrusted the spanish margin \
+at the The Northern Pyrenean Fault.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654029913/GeoJourney/OloronJacaPyreneesGeotraverse/Accous/AccousCollision_lckma9.jpg')
+accous.photo.attach(io: file, filename: 'Accous.jpg', content_type: 'image/jpg')
+puts "Accous site Done"
+
+puts "Create Castillo de Acher site"
+castillo_de_acher = Site.create!(itinerary: oloron_jaca,
+                                 stage: 3,
+                                 name: "Castillo de Acher",
+                                 summary: "Ancient red desert",
+                                 location: "Anglus, 64490 Urdos, France",
+                                 latitude: 42.809381,
+                                 longitude: -0.555496,
+                                 duration_in_minutes: 240,
+                                 content: "260 millions years ago, during Permian times, the climate of the Pangean \
+                                 supercontinent was very arid. Over time, sand grains from the desert consolidated \
+                                 into beautiful red standstoned, due to the oxidation of iron minerals.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654029590/GeoJourney/OloronJacaPyreneesGeotraverse/castilloDeAcher/CastillodeAcherPermianSandstone_s82eag.jpg')
+castillo_de_acher.photo.attach(io: file, filename: 'CastilloDeAcher.jpg', content_type: 'image/jpg')
+puts "Castillo de Acher site Done"
+
+puts "Create Candanchu site"
+candanchu = Site.create!(itinerary: oloron_jaca,
+                         stage: 4,
+                         name: "candanchu",
+                         summary: "The heart of the Pyrenees",
+                         location: "N-330-b, 22889 Candanchú, Spain",
+                         latitude: 42.789858,
+                         longitude: -0.526142,
+                         duration_in_minutes: 40,
+                         content: "This site is made up of rocks that were formed during an previous collision that \
+occured 300 million years ago: the Hercynian orogeny. Remnants of this collision can be found in the Massif central \
+and Brittany, in France, as well as the Appalachian, in the US.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654030821/GeoJourney/OloronJacaPyreneesGeotraverse/Candanchu/candanchuAxialZone_jdgpo9.jpg')
+candanchu.photo.attach(io: file, filename: 'Candanchu.jpg', content_type: 'image/jpg')
+puts "Candanchu site Done"
+
+puts "Create Puente de Torrijos site"
+puente_de_torrijos = Site.create!(itinerary: oloron_jaca,
+                                  stage: 5,
+                                  name: "Puente de Torrijos",
+                                  summary: "Turbulent seabed",
+                                  location: "unnamed road, 22710 Jaca, Spain",
+                                  latitude: 42.609706,
+                                  longitude: -0.544252,
+                                  duration_in_minutes: 30,
+                                  content: "45 millions years ago, the Iberian and the European plates came closer \
+together. The ancient sea that separated them underwent frequent earthquakes. During these earthquakes, loads of \
+coarse sediments were rushing down the continental slopes and deposited at the bottom. During quiet times, only fine \
+sediments deposited, thereby creating distinctive repeating layer sequences, known as Flysch.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654030883/GeoJourney/OloronJacaPyreneesGeotraverse/CanteraDeTorrijos/canteraDeTorrijosFlysch_iyuxgi.jpg')
+puente_de_torrijos.photo.attach(io: file, filename: 'PuenteDeTorrijos.jpg', content_type: 'image/jpg')
+puts "Puente de Torrijos site Done"
+
+puts "Create Murillo de Gallego site"
+murillo_de_gallego = Site.create!(itinerary: oloron_jaca,
+                                  stage: 6,
+                                  name: "Murillo de Gallego",
+                                  summary: "Turbulent seabed",
+                                  location: "Via Ferrata Varela Portillo, 22808 Murillo de Gállego, Spain",
+                                  latitude: 42.362603,
+                                  longitude: -0.758743,
+                                  duration_in_minutes: 60,
+                                  content: "Since 40 millions years ago, the Pyrenees are continously eroding away. \
+Coarse material was transported away and deposited in the Ebro foreland, forming conglomerates made up of large \
+pebbles. Futher erosion stripped the finest sediments and scuplted huge columns and pinnacles of coarse sediments.")
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654030923/GeoJourney/OloronJacaPyreneesGeotraverse/MurilloDeGallego/murillodeGallegoConglomerates_mobeln.jpg')
+murillo_de_gallego.photo.attach(io: file, filename: 'Murillo de Gallego', content_type: 'image/jpg')
+puts "Murillo de Gallego site Done"
 
 puts "Seed complete"
