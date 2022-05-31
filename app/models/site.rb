@@ -1,6 +1,6 @@
 class Site < ApplicationRecord
   belongs_to :itinerary
-  # has_one_attached :photo
+  has_one_attached :photo
 
   validates :itinerary, presence: true
   validates :name, presence: true, uniqueness: true
