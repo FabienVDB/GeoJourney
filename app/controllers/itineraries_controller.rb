@@ -6,4 +6,8 @@ class ItinerariesController < ApplicationController
       @itineraries = Itinerary.all
     end
   end
+
+  def show
+    @itinerary = Itinerary.find(params[:id])
+  end
 end
