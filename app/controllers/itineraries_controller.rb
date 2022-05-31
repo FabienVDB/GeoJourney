@@ -1,5 +1,5 @@
 class ItinerariesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     if params[:area].present?
@@ -12,4 +12,5 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
   end
+
 end

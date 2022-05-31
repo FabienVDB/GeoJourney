@@ -1,0 +1,21 @@
+.btn-map {
+  color: #ebebeb;
+  border: 1px solid #090909;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  background-color: #090909;
+  position: absolute;
+  text-decoration: none;
+  left: 35%;
+  bottom: 30%;
+
+
+}
+
+.btn-map:hover {
+  background-color: #2d2c2c;
+  color: #ebebeb;
+
+}
