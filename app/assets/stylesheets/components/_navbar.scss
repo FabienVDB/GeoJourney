@@ -1,12 +1,15 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.menu-checkbok{
+  margin-left: 16px;
+
+
+}
+#navbarDropdown{
+right: 6px;
+top: 50%;
+transform: translateY(-50%);
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+h1{
+  color: green;
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }
