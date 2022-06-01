@@ -34,20 +34,22 @@ puts "Create areas"
 western_alps = Area.create!(name: "Western Alps")
 central_pyenees = Area.create!(name: "Central Pyrenees")
 
-puts "Create Western Alps Geotraverse itinerary"
-geotraverse_western_alps = Itinerary.create!(name: "Western Alps Geotraverse",
-                                             theme: geotraverse,
-                                             area: western_alps,
-                                             summary: "Cut through the core of the Alps to understand its formation",
-                                             content: "The Alps arose as a result of the collision of the African \
-and Eurasian tectonic plates, in which the Alpine Tethys ocean, \
-which was formerly in between these continents, disappeared.")
+puts "Create Western Switzerland Geotraverse itinerary"
+western_switzerland = Itinerary.create!(name: "Western Switzerland Geotraverse",
+                                        theme: geotraverse,
+                                        area: western_alps,
+                                        summary: "Traverse the core of the Alps",
+                                        content: "The Alps arose as a result of the collision of the African \
+and Eurasian tectonic plates. The Alpine Tethys ocean, which separated these continents since 220 millions years ago, \
+started to disappear under the African-Italian plate around 65 millions years ago, due to their convergence. \
+The African-Italian plate consequently overthrusted the European margin, which was eventually pushed back up, being \
+less dense than the oceanic crust")
 file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654004483/GeoJourney/WesternAlpsGeotraverse/WesternAlpsGeotraverse_x7oxej.jpg')
-geotraverse_western_alps.photo.attach(io: file, filename: 'WesternAlpsGeotraverse.jpg', content_type: 'image/jpg')
-puts "Western Alps Geotraverse itinerary done"
+western_switzerland.photo.attach(io: file, filename: 'WesternSwitzerlandGeotraverse.jpg', content_type: 'image/jpg')
+puts "Western Switzerland Geotraverse itinerary done"
 
 puts "Create plagne site"
-plagne = Site.create!(itinerary: geotraverse_western_alps,
+plagne = Site.create!(itinerary: western_switzerland,
                       stage: 1,
                       name: "Dinoplagne",
                       summary: "Dinosaur footprints",
@@ -66,7 +68,7 @@ plagne.photo.attach(io: file, filename: 'Dinoplagne.jpg', content_type: 'image/j
 puts "Plagne site Done"
 
 puts "Create mont pélerin site"
-mont_pelerin = Site.create!(itinerary: geotraverse_western_alps,
+mont_pelerin = Site.create!(itinerary: western_switzerland,
                             stage: 2,
                             name: "Mont Pélerin conglomerates",
                             summary: "Alpine foreland basin",
@@ -84,7 +86,7 @@ mont_pelerin.photo.attach(io: file, filename: 'MontPelerin.jpg', content_type: '
 puts "Mont Pèlerin site Done"
 
 puts "Create morcles site"
-morcles = Site.create!(itinerary: geotraverse_western_alps,
+morcles = Site.create!(itinerary: western_switzerland,
                        stage: 3,
                        name: "Morcles nappe",
                        summary: "Spectacular folds in the calcareous Alps",
@@ -104,7 +106,7 @@ morcles.photo.attach(io: file, filename: 'Morcles.jpg', content_type: 'image/jpg
 puts "Morcles site done"
 
 puts "Create zermatt site"
-zermatt = Site.create!(itinerary: geotraverse_western_alps,
+zermatt = Site.create!(itinerary: western_switzerland,
                        stage: 4,
                        name: "Zermatt thrusts",
                        summary: "Colliding continents: Europe meets Africa",
@@ -125,7 +127,7 @@ puts "Create Oloron Jaca Geotraverse itinerary"
 oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
                                 theme: geotraverse,
                                 area: central_pyenees,
-                                summary: "Cut through the heart of the Pyrenees to understand its formation",
+                                summary: "Traverse the heart of the Pyrenees",
                                 content: "The Pyrenees' present configuration is due to the collision between \
 the microcontinent Iberia and the European Plate. The two continents were approaching each other since \
 100 million years ago and were consequently colliding from 55 to 25 million years ago.")
