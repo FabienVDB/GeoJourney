@@ -1,4 +1,7 @@
 <%= render 'shared/navbar' %>
-<% @itineraries.each do |itinerary| %>
-  <%= render "shared/card_itinerary", itinerary: itinerary %>
-<% end %>
+ <%= render 'shared/btn-map' %>
+  <div class="cards">
+    <% @itineraries.each do |itinerary| %>
+      <%= render "shared/card_itinerary_index", itinerary: itinerary %>
+    <% end %>
+  </div>

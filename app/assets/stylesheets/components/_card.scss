@@ -11,10 +11,12 @@
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 10px;
-  box-shadow: 6px 6px 20px -4px #545453;
+  box-shadow: 1px 5px 11px -1px rgba(0,0,0,0.4);
   text-align: center;
   margin-left:10%;
   margin-top: 5%;
+  position: relative;
+
 }
 
 .card-itinerary:hover{
@@ -32,11 +34,150 @@
 
 .fa-heart{
   position: relative;
-  top: -39%;
-  left: 90%;
+  left: 266px;
+  top: -61px;
+  color: white;
 }
 
 .fa-plus{
   position: relative;
   padding-left: 30px;
+  color: white;
+
+}
+
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.dropdown-divider{
+  margin-left: 10%;
+  margin-right: 10%;
+  color: #1EDD88;
+}
+.fa-calendar-minus{
+  position: relative;
+  right: 87%;
+  bottom: -36%;
+  color: #1EDD88;
+}
+
+.card-lead{
+  width: 300px;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 1px 5px 11px -1px rgba(0,0,0,0.4);
+  text-align: center;
+  margin-left:10%;
+  margin-top: 5%;
+  position: relative;
+}
+
+.card-description{
+  font-size: 18px;
+  margin:10%;
+  margin-top: 2%;
+  color: rgb(35, 35, 35);
+  opacity: 0.8;
+  text-align:center;
+}
+
+.comentaire{
+  text-decoration: none;
+  color: #1EDD88;
+  position: relative;
+  padding-left: 12%;
+
+}
+.comentaire:hover{
+  text-decoration: none;
+  color: #1EDD88;
+
+}
+
+.card-site {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.card-site img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-top: 5%;
+
+}
+
+.card-site h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-site p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-site .card-site-infos {
+  padding: 16px;
+  padding-left: 2%;
+
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

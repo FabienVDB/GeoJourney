@@ -1,0 +1,11 @@
+<div data-controller="comment">
+  <div class="card-lead " style="background-image: url(<%= @itinerary.photo.attached? ? cl_image_path(@itinerary.photo&.key) : cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill)  %>)">
+    <%= @itinerary.name %>
+  </div>
+     <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
+      <div class= "d-none" data-comment-target="displayed">
+        <div class="card-description ">
+          <%=@itinerary.content %>
+        </div>
+      </div>
+</div>
