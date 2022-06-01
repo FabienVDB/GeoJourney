@@ -6,13 +6,20 @@
 @import "card";
 @import "btn";
 
-
+// font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+$main-color:  #1EDD88;
 
 body{
 background-color: rgb(255, 255, 255);
+font-family: 'Montserrat', sans-serif;
 }
 
+
+
 h1{
-  color: rgb(117, 227, 117);
+  color: #1EDD88;
   text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
+  font-family: 'Montserrat', sans-serif;
 }
