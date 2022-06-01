@@ -2,7 +2,7 @@
 <% img_url = itinerary.photo.attached? ? cl_image_path(itinerary.photo.key, width: 200, crop: :fill) : default_img_url %>
 <div class="card-index">
   <div class="card-itinerary" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= img_url %>')">
-    <i class="fa-light fa-heart"></i>
+   <i class="fa-regular fa-heart"></i>
     <%= itinerary.name %>
   </div>
   <div class="summary">
