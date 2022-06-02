@@ -11,4 +11,15 @@ class Itinerary < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :summary, presence: true
   validates :content, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    associated_against: {
+      area: :name,
+      theme: :name
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end
