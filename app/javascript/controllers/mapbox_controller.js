@@ -8,128 +8,115 @@ export default class extends Controller {
   }
 
   initialize() {
-    this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving/";
+    this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving";
     this.apiKey = "pk.eyJ1IjoiZmFiaWVudmRiIiwiYSI6ImNsMzJ2NXNvbTAxaGYzanA2dG93dGFoajUifQ.7Ytq_kjops26CIM84GI6mQ";
   }
 
-  connect() {
+  async connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/satellite-streets-v11"
     })
-    this.#addMarkersToMap()
-    this.#fitMapToMarkers()
-    this.map.on('load', () => {this.#addLineSource(); this.#drawLineSource()})
 
-    // routes_url = "https://api.mapbox.com/directions/v5/mapbox/driving/0,45;5,40?access_token=pk.eyJ1IjoiZmFiaWVudmRiIiwiYSI6ImNsMzJ2NXNvbTAxaGYzanA2dG93dGFoajUifQ.7Ytq_kjops26CIM84GI6mQ"
-    //     var coords = polyline.decode(data.routes[0].geometry);
-    // var line = L.polyline(coords).addTo(mapTwo);
+    this.itineraries = this.#reconstructItineraries(JSON.parse(this.data.get("itineraries")))
+    await this.#displayRoutes(this.itineraries)
+    this.#fitMapToItineraries(this.itineraries)
 
-    // console.log(this.data.get("coordinates"))
-
-    //this.coords = this.data.get("coordinates")
-
-    //this.itineraries = this.data.get("itineraries")
-    //console.log(this.coords)
-    // console.log(typeof this.coords);
-    // console.log(typeof this.markersValue);
-    // console.log(this.coords)
-    //console.log(typeof this.itineraries)
-    // this.markers = this.coords.map((e) => e)
-    // console.log(this.markers)
-
-    this.itineraries = JSON.parse(this.data.get("coordinates"))
-    this.sitesCoords = this.itineraries.map((i) => i.sites)
-    this.itineraries.forEach((i) => {
-      console.log(i.sites)
-      const coords_arr = i.sites.map(site => {
-        console.log([site.lng, site.lat])
-      });
-      console.log(coords_arr);
-    }
-    );
-    // console.log(this.itineraries)
-    // console.log(this.sitesCoords)
-    // console.log(this.markersValue)
-
-    // this.names = this.coords.map((e) => e.name)
-    // console.log(this.names)
-
-    // this.markers_lng = this.markersValue.map((m) => m.lng)
-    // console.log(this.markers_lng)
-
+    this.#addFirstSiteMarkersToMap(this.itineraries)
   }
 
-  #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
+
+  #reconstructItineraries(itineraries) {
+    const itineraries_coords = itineraries.map(i => i.sites.sort((s1, s2) => s1.stage - s2.stage).map(s => [s.lng, s.lat] ))
+    return itineraries.map((itinerary, index) => {
+      return {name: itinerary.name, summary: itinerary.summary, info_window: itinerary.info_window, coords: itineraries_coords[index]}
+    });
+  }
+
+  async #displayRoutes(itineraries) {
+    for (const itinerary of itineraries) {
+      const route = await this.#fetchRoutesGeometries(itinerary)
+      this.map.on('load', () => {this.#addLineSource(`${itinerary.name}Route`, route); this.#addLayer(`${itinerary.name}Route`)})
+    }
+  }
+
+  #buildURL(itinerary) {
+    const coordsString = itinerary.coords.join(';')
+    return `${this.baseUrl}/${coordsString}?geometries=geojson&access_token=${this.apiKey}`
+  }
+
+  #addFirstSiteMarkersToMap(itineraries) {
+    itineraries.forEach((itinerary) => {
+      console.log(itinerary.coords[0])
+      const popup = new mapboxgl.Popup().setHTML(itinerary.info_window)
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat(itinerary.coords[0])
+        .setPopup(popup)
         .addTo(this.map)
     });
   }
 
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-  }
-
-  // async fetchRoutesGeometries() {
-  //   const response = await fetch(`${this.baseUrl}?q=${this.inputTarget.value}&appid=${this.apiKey}&units=metric`);
-  //   const data = await response.json();
-  //   this.#displayResults(data);
+  // #fitMapToMarkers() {
+  //   const bounds = new mapboxgl.LngLatBounds()
+  //   this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+  //   this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   // }
 
+  // #addMarkersToMap() {
+  //   this.markersValue.forEach((marker) => {
+  //     const popup = new mapboxgl.Popup().setHTML(marker.info_window) // add this
+  //     new mapboxgl.Marker()
+  //       .setLngLat([ marker.lng, marker.lat ])
+  //       .setPopup(popup) // add this
+  //       .addTo(this.map)
+  //   });
 
-  #addLineSource(){
-    this.map.addSource('route', {
+  #fitMapToItineraries(itineraries) {
+    const bounds = new mapboxgl.LngLatBounds()
+    itineraries.forEach(itinerary => {
+      itinerary.coords.forEach(siteCoords => {
+        bounds.extend(siteCoords)
+      });
+    })
+    this.map.fitBounds(bounds, { padding: 50, maxZoom: 15, duration: 0 })
+  }
+
+  async #fetchRoutesGeometries(itinerary) {
+    const mapboxDirectionUrl = this.#buildURL(itinerary)
+    const response = await fetch(mapboxDirectionUrl);
+    const data = await response.json();
+    console.log("duration")
+    console.log(data.routes[0].duration / 3600)
+    return data.routes[0].geometry.coordinates;
+  }
+
+
+  #addLineSource(line_name, line_coords){
+    this.map.addSource(line_name, {
               'type': 'geojson',
               'data': {
               'type': 'Feature',
               'properties': {},
               'geometry': {
                 'type': 'LineString',
-                'coordinates': [
-                  [-122.483696, 37.833818],
-                  [-122.483482, 37.833174],
-                  [-122.483396, 37.8327],
-                  [-122.483568, 37.832056],
-                  [-122.48404, 37.831141],
-                  [-122.48404, 37.830497],
-                  [-122.483482, 37.82992],
-                  [-122.483568, 37.829548],
-                  [-122.48507, 37.829446],
-                  [-122.4861, 37.828802],
-                  [-122.486958, 37.82931],
-                  [-122.487001, 37.830802],
-                  [-122.487516, 37.831683],
-                  [-122.488031, 37.832158],
-                  [-122.488889, 37.832971],
-                  [-122.489876, 37.832632],
-                  [-122.490434, 37.832937],
-                  [-122.49125, 37.832429],
-                  [-122.491636, 37.832564],
-                  [-122.492237, 37.833378],
-                  [-122.493782, 37.833683]
-                ]
+                'coordinates': line_coords
               }
               }
     });
   }
 
-  #drawLineSource(){
+  #addLayer(line_name){
     this.map.addLayer({
-              'id': 'route',
+              'id': line_name,
               'type': 'line',
-              'source': 'route',
+              'source': line_name,
               'layout': {
                 'line-join': 'round',
                 'line-cap': 'round'
               },
               'paint': {
-                'line-color': '#888',
+                'line-color': '#1434A4',
                 'line-width': 8
               }
       });

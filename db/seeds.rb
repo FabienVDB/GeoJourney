@@ -15,13 +15,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Clear sites"
-Site.destroy_all if Rails.env.development?
+Site.destroy_all # if Rails.env.development?
 puts "Clear itineraries"
-Itinerary.destroy_all if Rails.env.development?
+Itinerary.destroy_all #  if Rails.env.development?
 puts "Clear areas"
-Area.destroy_all if Rails.env.development?
+Area.destroy_all # if Rails.env.development?
 puts "Clear themes"
-Theme.destroy_all if Rails.env.development?
+Theme.destroy_all # if Rails.env.development?
 puts "Clear done"
 
 puts "Create themes"
@@ -110,9 +110,9 @@ zermatt = Site.create!(itinerary: western_switzerland,
                        stage: 4,
                        name: "Zermatt thrusts",
                        summary: "Colliding continents: Europe meets Africa",
-                       location: "Mürini 3920 Zermatt, Switzerland",
-                       latitude: 46.0256056,
-                       longitude: 7.7562238,
+                       location: "Bahnhofstrasse 1, 3929 Täsch, Switzerland",
+                       latitude: 46.06825142238093,
+                       longitude: 7.776304828342801,
                        duration_in_minutes: 360,
                        content: "The European rocks of the Monte Rosa nappe were buried at least 45 kilometers \
 beneath the oceanic floor and the African rocks some 55 millions years ago. Susbsequent uplift \

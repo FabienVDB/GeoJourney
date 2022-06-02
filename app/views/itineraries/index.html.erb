@@ -9,11 +9,8 @@
 
 <%= render partial: "shared/search_form"%>
 
-<% @markers.to_json %>
-
-<div style="width: 100%; height: 600px;"
+<div style="width: 70%; height: 600px; margin: 0 auto"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-mapbox-coordinates="<%= @coordinates.to_json %>"
-  data-mapbox-itineraries="<%= @itineraries.to_json %>"></div>
+  data-mapbox-itineraries="<%= @itineraries_for_mapbox.to_json %>"></div>
