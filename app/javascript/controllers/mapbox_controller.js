@@ -19,8 +19,8 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
-    // this.#addMarkersToMap()
-    // this.#fitMapToMarkers()
+    this.#addMarkersToMap()
+    this.#fitMapToMarkers()
     this.map.on('load', () => {this.#addLineSource(); this.#drawLineSource()})
 
     // routes_url = "https://api.mapbox.com/directions/v5/mapbox/driving/0,45;5,40?access_token=pk.eyJ1IjoiZmFiaWVudmRiIiwiYSI6ImNsMzJ2NXNvbTAxaGYzanA2dG93dGFoajUifQ.7Ytq_kjops26CIM84GI6mQ"
@@ -42,10 +42,17 @@ export default class extends Controller {
 
     this.itineraries = JSON.parse(this.data.get("coordinates"))
     this.sitesCoords = this.itineraries.map((i) => i.sites)
-
-    console.log(this.itineraries)
-    console.log(this.sitesCoords)
-    console.log(this.markersValue)
+    this.itineraries.forEach((i) => {
+      console.log(i.sites)
+      const coords_arr = i.sites.map(site => {
+        console.log([site.lng, site.lat])
+      });
+      console.log(coords_arr);
+    }
+    );
+    // console.log(this.itineraries)
+    // console.log(this.sitesCoords)
+    // console.log(this.markersValue)
 
     // this.names = this.coords.map((e) => e.name)
     // console.log(this.names)
