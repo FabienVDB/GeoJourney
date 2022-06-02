@@ -91,6 +91,7 @@
   color: rgb(35, 35, 35);
   opacity: 0.8;
   text-align:center;
+  color:  #14ab67;
 }
 
 .comentaire{
@@ -147,6 +148,19 @@
 
 }
 
+.info-site{
+  font-size: 18px;
+  margin: 10%;
+  margin-top: 2%;
+  color: #232323;
+  opacity: 0.8;
+  text-align: center;
+  color: #14ab67;
+}
+.fa-clock{
+  padding-top: 10px;
+  color: #14ab67;
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

@@ -6,10 +6,13 @@
       <div class="card-site-infos">
         <h2><%= site.name %></h2>
         <p><%= site.summary %></p>
+        <i class="fa-regular fa-clock"></i>
       </div>
   </div>
   <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
-    <div class= "d-none" data-comment-target="displayed">
-      <%= site.content %>
-    </div>
+  <div class="info-site">
+      <div class= "d-none" data-comment-target="displayed">
+        <%= site.content %>
+      </div>
+  </div>
 </div>
