@@ -110,7 +110,7 @@
 .card-site {
   overflow: hidden;
   height: 120px;
-  background: white;
+  background: rgb(255, 255, 255);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -118,12 +118,13 @@
 }
 
 .card-site img {
-  height: 100%;
-  width: 120px;
+  height: 90%;
+  width: 150px;
   object-fit: cover;
   border-radius: 10px;
   margin-left: 5%;
   margin-top: 5%;
+  margin-bottom: 5%;
 
 }
 
