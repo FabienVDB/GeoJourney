@@ -1,9 +1,14 @@
-.search_bar{
-  position:absolute;
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
   transform: scale(0);
 }
 
-.search_bar + label {
+.collection_check_boxes + label {
+  cursor: pointer;
   display: inline-block;
   font-size: 0.7rem;
   border-radius: 50rem;
@@ -15,7 +20,12 @@
   margin-bottom: 0.4rem;
 }
 
-.search_bar:checked + label {
+.collection_check_boxes:checked {
   background-color: #7E73FF;
   color: white;
+}
+
+#search_area_western_alps{
+  position: absolute;
+  transform: scale(0);
 }
