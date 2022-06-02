@@ -2,18 +2,25 @@ class ItinerariesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:area].present?
-      @itineraries = Itinerary.search(params[:area])
+    @areas = Area.all
+    @themes = Theme.all
+    if params[:search].present?
+      areas = params[:search][:area].reject(&:empty?)
+      if areas.size == 1
+        @itineraries = Itinerary.global_search(params[:search][:area].reject(&:empty?).first)
+      else
+        @itineraries = areas.map { |area| Itinerary.global_search(area).first }
+      end
+      themes = params[:search][:theme].reject(&:empty?)
+      if themes.size == 1
+        @itineraries = Itinerary.global_search(params[:search][:theme].reject(&:empty?).first)
+      else
+        @itineraries = themes.map { |theme| Itinerary.global_search(theme).first }
+      end
+
     else
       @itineraries = Itinerary.all
     end
-
-    # @markers = @itineraries.first.sites.map do |site|
-    #   {
-    #     lat: site.latitude,
-    #     lng: site.longitude
-    #   }
-    # end
 
     @coordinates = @itineraries.map do |itinerary|
       {
