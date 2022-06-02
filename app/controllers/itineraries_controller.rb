@@ -7,6 +7,22 @@ class ItinerariesController < ApplicationController
     else
       @itineraries = Itinerary.all
     end
+
+    @markers = @itineraries.first.sites.map do |site|
+      {
+        lat: site.latitude,
+        lng: site.longitude
+      }
+    end
+
+    @coordinates = @itineraries.map do |itinerary|
+      itinerary.sites.map do |site|
+        {
+          lat: site.latitude,
+          lng: site.longitude
+        }
+      end
+    end
   end
 
   def show
