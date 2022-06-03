@@ -38,6 +38,7 @@ puts "Create Western Switzerland Geotraverse itinerary"
 western_switzerland = Itinerary.create!(name: "Western Switzerland Geotraverse",
                                         theme: geotraverse,
                                         area: western_alps,
+                                        duration_in_days: 2,
                                         summary: "Traverse the core of the Alps",
                                         content: "The Alps arose as a result of the collision of the African \
 and Eurasian tectonic plates. The Alpine Tethys ocean, which separated these continents since 220 millions years ago, \
@@ -127,6 +128,7 @@ puts "Create Oloron Jaca Geotraverse itinerary"
 oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
                                 theme: geotraverse,
                                 area: central_pyenees,
+                                duration_in_days: 3,
                                 summary: "Traverse the heart of the Pyrenees",
                                 content: "The Pyrenees' present configuration is due to the collision between \
 the microcontinent Iberia and the European Plate. The two continents were approaching each other since \
@@ -186,7 +188,7 @@ puts "Castillo de Acher site Done"
 puts "Create Candanchu site"
 candanchu = Site.create!(itinerary: oloron_jaca,
                          stage: 4,
-                         name: "candanchu",
+                         name: "Candanchú",
                          summary: "The heart of the Pyrenees",
                          location: "N-330-b, 22889 Candanchú, Spain",
                          latitude: 42.789858,
