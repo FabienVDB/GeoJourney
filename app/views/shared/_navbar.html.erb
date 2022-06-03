@@ -1,6 +1,8 @@
 <div class="titre-avatar position-relative">
   <li class="nav-item dropdown list-unstyled">
-    <h1 class="text-center mt-3 mb-3">GeoJourney </h1>
+    <%= link_to root_path, class: "text-center mt-3 mb-3" do%>
+      <h1>GeoJourney</h1>
+    <% end %>
     <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle position-absolute", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
       <%= link_to "Favourites", "#", class: "dropdown-item" %>
