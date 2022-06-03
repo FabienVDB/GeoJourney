@@ -2,6 +2,9 @@
   <h2><%= itinerary.name %></h2>
   <p><%= itinerary.summary%></p>
   <i class="fa-solid fa-calendar-minus"></i>
-  <%=itinerary.duration_in_days%> days
+  <div class="duration-days">
+    <i class="fa-solid fa-calendar-minus"></i>
+    <p><%=itinerary.duration_in_days%> days</p>
+  </div>
   <%= link_to "Go", itinerary_path(itinerary), class: "btn-info-window" %>
 </div>
