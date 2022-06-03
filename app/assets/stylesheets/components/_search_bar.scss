@@ -1,31 +1,30 @@
 .tag-item {
   display: inline-block;
+
+  input {
+    display: none;
+
+    &:checked + label {
+      color: white;
+      background-color: #1EDD88;
+    }
+  }
 }
 
-.tag-selector {
-  position: absolute;
-  transform: scale(0);
-}
-
-.collection_check_boxes + label {
+.collection_check_boxes {
   cursor: pointer;
   display: inline-block;
   font-size: 0.7rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
-  background-color: #ECEAFF;
-  color: #7E73FF;
-  border: 1px solid #7E73FF;
+  color: #1EDD88;
+  border: 1px solid #1EDD88;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
 }
 
-.collection_check_boxes:checked {
-  background-color: #7E73FF;
-  color: white;
-}
-
-#search_area_western_alps{
-  position: absolute;
-  transform: scale(0);
+.search_bar_button {
+  color:#1EDD88;
+  background-color: transparent;
+  border: 1px solid #1EDD88;
 }
