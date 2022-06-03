@@ -1,4 +1,5 @@
 <%= render 'shared/navbar' %>
+<%= render "shared/search_form"%>
 
  <%= render 'shared/btn-map' %>
   <div class="cards">
@@ -6,8 +7,6 @@
       <%= render "shared/card_itinerary_index", itinerary: itinerary %>
     <% end %>
   </div>
-
-<%= render partial: "shared/search_form"%>
 
 <div style="width: 70%; height: 600px; margin: 0 auto"
   data-controller="mapbox"

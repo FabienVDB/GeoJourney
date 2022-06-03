@@ -14,3 +14,9 @@ ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+
+import { noCloseDropdown } from "../../../app/javascript/component/noCloseDropdown.js"
+
+document.addEventListener('turbolinks:load', () => {
+  noCloseDropdown();
+})

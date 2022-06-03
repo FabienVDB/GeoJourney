@@ -21,7 +21,6 @@ class ItinerariesController < ApplicationController
     else
       @itineraries = Itinerary.all
     end
-
     @markers = @itineraries.first.sites.map do |site|
       {
         lat: site.latitude,
