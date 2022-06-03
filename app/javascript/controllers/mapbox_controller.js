@@ -30,7 +30,11 @@ export default class extends Controller {
   #reconstructItineraries(itineraries) {
     const itineraries_coords = itineraries.map(i => i.sites.sort((s1, s2) => s1.stage - s2.stage).map(s => [s.lng, s.lat] ))
     return itineraries.map((itinerary, index) => {
-      return {name: itinerary.name, summary: itinerary.summary, info_window: itinerary.info_window, coords: itineraries_coords[index]}
+      return {name: itinerary.name,
+              summary: itinerary.summary,
+              info_window: itinerary.info_window,
+              image_url: itinerary.image_url,
+              coords: itineraries_coords[index]}
     });
   }
 
@@ -50,7 +54,16 @@ export default class extends Controller {
     itineraries.forEach((itinerary) => {
       console.log(itinerary.coords[0])
       const popup = new mapboxgl.Popup().setHTML(itinerary.info_window)
-      new mapboxgl.Marker()
+
+
+      const customMarker = document.createElement("div")
+      customMarker.className = "custom-marker"
+      customMarker.style.backgroundImage = `url('${itinerary.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat(itinerary.coords[0])
         .setPopup(popup)
         .addTo(this.map)
