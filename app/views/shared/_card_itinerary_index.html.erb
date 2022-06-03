@@ -5,8 +5,10 @@
     <%= link_to "#" do %>
       <i class="fa-regular fa-heart"></i>  <% end %>
       <%= itinerary.name %>
-    <i class="fa-solid fa-calendar-minus"></i>
-    <%=itinerary.duration_in_days%>
+    <div class="duration-days">
+      <i class="fa-solid fa-calendar-minus"></i>
+      <p><%=itinerary.duration_in_days%></p>
+    </div>
 
     <%= link_to "", itinerary_path(itinerary), class: "stretched-link" %>
   </div>
