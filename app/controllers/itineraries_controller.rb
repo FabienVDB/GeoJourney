@@ -33,7 +33,9 @@ class ItinerariesController < ApplicationController
         name: itinerary.name,
         summary: itinerary.summary,
         sites: itinerary.sites.sort_by(&:stage).map { |s| { stage: s.stage, lat: s.latitude, lng: s.longitude } },
-        info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary })
+        # info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary }),
+        info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
+        image_url: helpers.cl_image_path(itinerary.photo.key)
       }
     end
 

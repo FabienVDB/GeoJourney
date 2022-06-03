@@ -38,7 +38,8 @@ puts "Create Western Switzerland Geotraverse itinerary"
 western_switzerland = Itinerary.create!(name: "Western Switzerland Geotraverse",
                                         theme: geotraverse,
                                         area: western_alps,
-                                        summary: "Traverse the core of the Alps",
+                                        duration_in_days: 2,
+                                        summary: "Dig through time in the heart of the Alps",
                                         content: "The Alps arose as a result of the collision of the African \
 and Eurasian tectonic plates. The Alpine Tethys ocean, which separated these continents since 220 millions years ago, \
 started to disappear under the African-Italian plate around 65 millions years ago, due to their convergence. \
@@ -127,7 +128,8 @@ puts "Create Oloron Jaca Geotraverse itinerary"
 oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
                                 theme: geotraverse,
                                 area: central_pyenees,
-                                summary: "Traverse the heart of the Pyrenees",
+                                duration_in_days: 3,
+                                summary: "How the Pyrenees were formed ? Dive deep to understand",
                                 content: "The Pyrenees' present configuration is due to the collision between \
 the microcontinent Iberia and the European Plate. The two continents were approaching each other since \
 100 million years ago and were consequently colliding from 55 to 25 million years ago.")
@@ -186,7 +188,7 @@ puts "Castillo de Acher site Done"
 puts "Create Candanchu site"
 candanchu = Site.create!(itinerary: oloron_jaca,
                          stage: 4,
-                         name: "candanchu",
+                         name: "Candanchú",
                          summary: "The heart of the Pyrenees",
                          location: "N-330-b, 22889 Candanchú, Spain",
                          latitude: 42.789858,

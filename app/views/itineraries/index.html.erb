@@ -1,15 +1,23 @@
 <%= render 'shared/navbar' %>
 <%= render "shared/search_form"%>
 
- <%= render 'shared/btn-map' %>
+<div class="map-wrapper">
   <div class="cards">
     <% @itineraries.each do |itinerary| %>
       <%= render "shared/card_itinerary_index", itinerary: itinerary %>
     <% end %>
   </div>
 
-<div style="width: 70%; height: 600px; margin: 0 auto"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-mapbox-itineraries="<%= @itineraries_for_mapbox.to_json %>"></div>
+  <div data-controller="mapdisplay">
+    <a data-action="click->mapdisplay#display" href="/" class="btn-map">Map</a>
+    <div class="map-container">
+      <div class= "d-none" data-mapdisplay-target="displayed" style="height: 600px"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-mapbox-itineraries="<%= @itineraries_for_mapbox.to_json %>">
+      </div>
+    </div>
+
+  </div>
+</div>
