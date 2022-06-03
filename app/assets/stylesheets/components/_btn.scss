@@ -23,5 +23,21 @@
 .btn-map:hover {
   background-color: #2d2c2c;
   color: #ebebeb;
+}
 
+.btn-info-window {
+  color: #191818;
+  border: 1px solid #ffffff;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  background-color:  #1EDD88;
+  text-decoration: none;
+  position: fixed;
+}
+
+.btn-info-window:hover {
+  background-color: #2d2c2c;
+  color: #ebebeb;
 }
