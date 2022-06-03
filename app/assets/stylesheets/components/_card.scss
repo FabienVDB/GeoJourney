@@ -173,11 +173,13 @@ color: #1EDD88;
 .duration-days{
   display: flex;
   position: absolute;
+  align-items: baseline;
   bottom: -8%;
   left: 7%;
-
 }
+
 .duration-days p{
+  font-size: 18px;
   padding-left: 10px;
 }
 
