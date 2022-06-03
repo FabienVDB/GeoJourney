@@ -39,7 +39,7 @@ western_switzerland = Itinerary.create!(name: "Western Switzerland Geotraverse",
                                         theme: geotraverse,
                                         area: western_alps,
                                         duration_in_days: 2,
-                                        summary: "Traverse the core of the Alps",
+                                        summary: "Dig through time in the heart of the Alps",
                                         content: "The Alps arose as a result of the collision of the African \
 and Eurasian tectonic plates. The Alpine Tethys ocean, which separated these continents since 220 millions years ago, \
 started to disappear under the African-Italian plate around 65 millions years ago, due to their convergence. \
@@ -129,7 +129,7 @@ oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
                                 theme: geotraverse,
                                 area: central_pyenees,
                                 duration_in_days: 3,
-                                summary: "Traverse the heart of the Pyrenees",
+                                summary: "How the Pyrenees were formed ? Dive deep to understand",
                                 content: "The Pyrenees' present configuration is due to the collision between \
 the microcontinent Iberia and the European Plate. The two continents were approaching each other since \
 100 million years ago and were consequently colliding from 55 to 25 million years ago.")
