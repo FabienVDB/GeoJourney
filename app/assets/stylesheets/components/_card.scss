@@ -149,17 +149,26 @@
 }
 
 .info-site{
-  font-size: 18px;
-  margin: 10%;
+  font-size: 16px;
+  margin: 5%;
   margin-top: 2%;
   color: #232323;
   opacity: 0.8;
   text-align: center;
   color: #14ab67;
+  letter-spacing: 2px;
 }
 .fa-clock{
   padding-top: 10px;
   color: #14ab67;
+}
+
+.duration-minutes p{
+  padding-left: 10px;
+
+}
+.duration-minutes{
+  display: flex;
 }
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {

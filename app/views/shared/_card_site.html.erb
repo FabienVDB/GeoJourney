@@ -1,18 +1,22 @@
 <% default_img_url = cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill) %>
 <% img_url = site.photo.attached? ? cl_image_path(site.photo.key, width: 200, crop: :fill) : default_img_url %>
-<div data-controller="comment">
-  <div class="card-site">
-    <%= cl_image_tag site.photo.key %>
-      <div class="card-site-infos">
-        <h2><%= site.name %></h2>
-        <p><%= site.summary %></p>
-        <i class="fa-regular fa-clock"></i>
-      </div>
-  </div>
-  <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
-  <div class="info-site">
-      <div class= "d-none" data-comment-target="displayed">
-        <%= site.content %>
-      </div>
+<div class="card">
+  <div data-controller="comment">
+    <div class="card-site">
+      <%= cl_image_tag site.photo.key %>
+        <div class="card-site-infos">
+          <h2><%= site.name %></h2>
+          <p><%= site.summary %></p>
+          <div class="duration-minutes">
+            <i class="fa-regular fa-clock"></i><p><%= site.duration_in_minutes %> min</p>
+          </div>
+        </div>
+    </div>
+    <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
+    <div class="info-site">
+        <div class= "d-none" data-comment-target="displayed">
+          <%= site.content %>
+        </div>
+    </div>
   </div>
 </div>
