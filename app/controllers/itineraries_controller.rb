@@ -5,27 +5,16 @@ class ItinerariesController < ApplicationController
     @areas = Area.all
     @themes = Theme.all
     if params[:search].present?
-      areas = params[:search][:area].reject(&:empty?)
-      if areas.size == 1
-        @itineraries = Itinerary.global_search(params[:search][:area].reject(&:empty?).first)
-      else
-        @itineraries = areas.map { |area| Itinerary.global_search(area).first }
-      end
-      themes = params[:search][:theme].reject(&:empty?)
-      if themes.size == 1
-        @itineraries = Itinerary.global_search(params[:search][:theme].reject(&:empty?).first)
-      else
-        @itineraries = themes.map { |theme| Itinerary.global_search(theme).first }
-      end
+      areas = selections('area')
+      themes = selections('theme')
+
+      @itineraries_by_areas = itineraries_by_multiple(areas)
+      @itineraries_by_themes = itineraries_by_multiple(themes)
+
+      @itineraries = @itineraries_by_areas.intersection(@itineraries_by_themes)
 
     else
       @itineraries = Itinerary.all
-    end
-    @markers = @itineraries.first.sites.map do |site|
-      {
-        lat: site.latitude,
-        lng: site.longitude
-      }
     end
 
     @itineraries_for_mapbox = @itineraries.map do |itinerary|
@@ -38,11 +27,23 @@ class ItinerariesController < ApplicationController
         image_url: helpers.cl_image_path(itinerary.photo.key)
       }
     end
-
-    @markers = @itineraries_for_mapbox.map { |i| i[:sites] }.flatten
   end
 
   def show
     @itinerary = Itinerary.find(params[:id])
+  end
+
+  private
+
+  def selections(params_key)
+    values = params[:search][params_key.to_s].reject(&:empty?)
+    values = params_key.capitalize.constantize.all.map(&:name) if values.empty?
+    values
+  end
+
+  def itineraries_by_multiple(selections)
+    @itineraries_by_selections = []
+    selections.each { |selection| @itineraries_by_selections += Itinerary.global_search(selection) }
+    @itineraries_by_selections
   end
 end
