@@ -571,7 +571,7 @@ marseille = Itinerary.create!(name: "Marseille Urban Geology",
                               area: provence,
                               duration_in_days: 1,
                               summary: "Visit Marseille in a way you'd never imagined")
-file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654360497/GeoJourney/ParisUrbanGeology/Paris_cjsl0b.jpg')
+file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654365447/GeoJourney/MarseilleUrbanGeology/Marseille_euq2ex.jpg')
 marseille.photo.attach(io: file, filename: 'Marseille.jpg', content_type: 'image/jpg')
 
 puts "  Create Marseille Site 1 !Fake!"
