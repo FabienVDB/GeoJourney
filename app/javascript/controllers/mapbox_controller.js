@@ -52,7 +52,6 @@ export default class extends Controller {
 
   #addFirstSiteMarkersToMap(itineraries) {
     itineraries.forEach((itinerary) => {
-      console.log(itinerary.coords[0])
       const popup = new mapboxgl.Popup().setHTML(itinerary.info_window)
 
 
@@ -97,10 +96,11 @@ export default class extends Controller {
 
   async #fetchRoutesGeometries(itinerary) {
     const mapboxDirectionUrl = this.#buildURL(itinerary)
+    console.log(mapboxDirectionUrl)
     const response = await fetch(mapboxDirectionUrl);
     const data = await response.json();
-    console.log("duration")
-    console.log(data.routes[0].duration / 3600)
+    // console.log("duration")
+    // console.log(data.routes[0].duration / 3600)
     return data.routes[0].geometry.coordinates;
   }
 

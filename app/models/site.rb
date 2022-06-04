@@ -3,9 +3,9 @@ class Site < ApplicationRecord
   has_one_attached :photo
 
   validates :itinerary, presence: true
-  validates :name, presence: true, uniqueness: true
-  validates :summary, presence: true
-  validates :content, presence: true
+  # validates :name, presence: true, uniqueness: true
+  # validates :summary, presence: true
+  # validates :content, presence: true
   validates :stage, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :longitude, presence: true
   validates :latitude, presence: true

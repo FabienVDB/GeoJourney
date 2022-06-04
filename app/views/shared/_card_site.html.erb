@@ -1,9 +1,9 @@
-<% default_img_url = cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill) %>
-<% img_url = site.photo.attached? ? cl_image_path(site.photo.key, width: 200, crop: :fill) : default_img_url %>
+<% default_img = site.itinerary.photo.key %>
+<% img = site.photo.attached? ? site.photo.key : default_img %>
 <div class="card">
   <div data-controller="comment">
     <div class="card-site">
-      <%= cl_image_tag site.photo.key %>
+      <%= cl_image_tag img %>
         <div class="card-site-infos">
           <h2><%= site.name %></h2>
           <p><%= site.summary %></p>
