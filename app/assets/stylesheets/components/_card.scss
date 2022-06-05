@@ -1,25 +1,65 @@
-.card-itinerary {
+.card-itinerary-parent {
+	display: flex;
+  flex-direction: column;
+  height: 220px;
   width: 300px;
+  align-self: center;
+  justify-self: center;
+  //box-shadow: 1px 5px 11px -1px rgba(0,0,0,0.4);
+  //border-radius: 20px;
+  // border-top-left-radius: 20px;
+  // border-top-right-radius: 20px;
+  // border-bottom-left-radius: 10px;
+  // border-bottom-right-radius: 10px;
+}
+
+.card-itinerary-child {
+  height: 180px;
+	background: #FFF;
+	border: 1px solid #FAFAFA;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+	border-radius: 20px;
   background-size: cover;
   background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  box-shadow: 1px 5px 11px -1px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-left:10%;
-  margin-top: 5%;
-  position: relative;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	cursor: pointer;
+	position: relative;
 }
 
-.card-itinerary:hover{
+.card-itinerary-child:hover{
   opacity: 0.5;
+}
+
+// .card-test p {
+// 	z-index: 10;
+// }
+
+.favorite-link {
+	z-index: 10;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.itinerary-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	opacity: 0;
+}
+
+.heart {
+  color: pink;
 }
 
 .summary {
@@ -31,35 +71,29 @@
   opacity: 0.8;
 }
 
-.fa-heart{
-  position: relative;
-  left: 266px;
-  top: -61px;
-  color: white;
-}
+// .fa-heart{
+//   position: relative;
+//   left: 266px;
+//   top: -61px;
+//   color: white;
+// }
 
-.fa-plus{
-  position: relative;
-  padding-left: 30px;
-  color: white;
+// .fa-plus{
+//   position: relative;
+//   padding-left: 30px;
+//   color: white;
+// }
 
-}
 
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
 
-.dropdown-divider{
+.dropdown-divider {
   margin-left: 10%;
   margin-right: 10%;
   color: #1EDD88;
 }
 .fa-calendar-minus{
 color: #1EDD88;
-
 
 }
 
@@ -178,43 +212,9 @@ color: #1EDD88;
   left: 7%;
 }
 
-.duration-days p{
+.duration-days p {
   font-size: 18px;
+  font-weight: lighter;
   padding-left: 10px;
-}
-
-
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  padding-bottom: 10px;
 }

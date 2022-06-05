@@ -1,0 +1,55 @@
+.card-itinerary-parent {
+	display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-self: center;
+  justify-self: center;
+}
+
+.card-itinerary-child {
+  height: 180px;
+	background: #FFF;
+	border: 1px solid #FAFAFA;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+	border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+	cursor: pointer;
+	position: relative;
+}
+
+.card-itinerary-child:hover{
+  opacity: 0.5;
+}
+
+// .card-test p {
+// 	z-index: 10;
+// }
+
+.favorite-link {
+	z-index: 10;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.itinerary-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	opacity: 0;
+}
+
+.heart {
+  color: pink;
+}

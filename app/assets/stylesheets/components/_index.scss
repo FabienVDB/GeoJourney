@@ -3,6 +3,7 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import 'cards_layout';
 @import "card";
 @import "btn";
 
@@ -18,8 +19,6 @@ body{
 background-color: rgb(255, 255, 255);
 font-family: 'Montserrat', sans-serif;
 }
-
-
 
 h1{
   color: #1EDD88;
