@@ -1,11 +1,27 @@
-<div data-controller="comment">
-  <div class="card-lead " style="background-image: url(<%= @itinerary.photo.attached? ? cl_image_path(@itinerary.photo&.key) : cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill)  %>)">
-    <%= @itinerary.name %>
-  </div>
-     <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
-      <div class= "d-none" data-comment-target="displayed">
-        <div class="card-description ">
-          <%=@itinerary.content %>
-        </div>
+<% default_img_url = cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill) %>
+<% img_url = @itinerary.photo.attached? ? cl_image_path(@itinerary.photo&.key) : default_img_url %>
+
+<div class="d-flex justify-content-center flex-nowrap">
+  <div class ="card-itinerary-parent show-page-parent" data-controller="content">
+    <div class="card-itinerary-child show-page-child" style="background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('<%= img_url %>')">
+      <%# !! Change link below to favorites path !! %>
+      <%= link_to "#", class: "favorite-link" do%>
+        <i class="fa-regular fa-heart heart"></i>
+      <% end %>
+      <p><%= @itinerary.name %></p>
+      <div class="duration-days">
+        <i class="fa-solid fa-calendar-minus"></i>
+        <p><%= @itinerary.duration_in_days%> day<%= @itinerary.duration_in_days > 1 ? "s" : "" %></p>
       </div>
+    </div>
+    <div>
+      <%= @itinerary.summary%>
+    </div>
+    <a data-action="click->content#display" href="#" class="content">more info</a>
+    <div class= "d-none" data-content-target="displayed">
+      <div class="card-description ">
+        <%=@itinerary.content %>
+      </div>
+    </div>
+  </div>
 </div>

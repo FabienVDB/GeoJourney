@@ -1,5 +1,12 @@
 <%= render 'shared/navbar' %>
 <%= render "shared/search_form"%>
+
+<div data-controller="mapboxapi"
+     data-mapboxapi-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+     data-mapboxapi-itineraries="<%= @itineraries_for_mapbox %>">
+  <%# data-action="load@window->mapboxapi#display" %>
+  <p data-action="load@window->mapboxapi#display"></p>
+</div>
 <div class="map-wrapper">
   <div class="cards">
     <% @itineraries.each do |itinerary| %>
@@ -16,6 +23,5 @@
         data-mapbox-itineraries="<%= @itineraries_for_mapbox %>">
       </div>
     </div>
-
   </div>
 </div>

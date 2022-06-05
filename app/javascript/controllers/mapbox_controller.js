@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
   }
 
   initialize() {
@@ -19,7 +19,8 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/satellite-streets-v11"
     })
 
-    this.itineraries = this.#reconstructItineraries(JSON.parse(this.data.get("itineraries")))
+    // this.itineraries = this.#reconstructItineraries(JSON.parse(this.data.get("itineraries")))
+    this.itineraries = JSON.parse(this.data.get("itineraries"))
     await this.#displayRoutes(this.itineraries)
     this.#fitMapToItineraries(this.itineraries)
 
@@ -27,16 +28,16 @@ export default class extends Controller {
   }
 
 
-  #reconstructItineraries(itineraries) {
-    const itineraries_coords = itineraries.map(i => i.sites.sort((s1, s2) => s1.stage - s2.stage).map(s => [s.lng, s.lat] ))
-    return itineraries.map((itinerary, index) => {
-      return {name: itinerary.name,
-              summary: itinerary.summary,
-              info_window: itinerary.info_window,
-              image_url: itinerary.image_url,
-              coords: itineraries_coords[index]}
-    });
-  }
+  // #reconstructItineraries(itineraries) {
+  //   const itineraries_coords = itineraries.map(i => i.sites.sort((s1, s2) => s1.stage - s2.stage).map(s => [s.lng, s.lat] ))
+  //   return itineraries.map((itinerary, index) => {
+  //     return {name: itinerary.name,
+  //             summary: itinerary.summary,
+  //             info_window: itinerary.info_window,
+  //             image_url: itinerary.image_url,
+  //             coords: itineraries_coords[index]}
+  //   });
+  // }
 
   async #displayRoutes(itineraries) {
     for (const itinerary of itineraries) {
@@ -96,11 +97,8 @@ export default class extends Controller {
 
   async #fetchRoutesGeometries(itinerary) {
     const mapboxDirectionUrl = this.#buildURL(itinerary)
-    console.log(mapboxDirectionUrl)
     const response = await fetch(mapboxDirectionUrl);
     const data = await response.json();
-    // console.log("duration")
-    // console.log(data.routes[0].duration / 3600)
     return data.routes[0].geometry.coordinates;
   }
 

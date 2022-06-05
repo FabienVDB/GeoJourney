@@ -37,12 +37,34 @@
   opacity: 0.5;
 }
 
-// .card-test p {
-// 	z-index: 10;
-// }
+.show-page-parent {
+  height: auto;
+  width: 600px;
+}
+
+.show-page-child {
+  height: 360px;
+}
+
+@media (max-width: 768px) {
+  .show-page-parent {
+    height: auto;
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .show-page-child {
+    height: 180px;
+  }
+}
+
+.no-hover {
+  pointer-events: none;
+}
 
 .favorite-link {
-	z-index: 10;
+	z-index: 1;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -123,18 +145,18 @@ color: #1EDD88;
   margin-top: 2%;
   color: rgb(35, 35, 35);
   opacity: 0.8;
-  text-align:center;
+  text-align: justify;
   color:  #14ab67;
 }
 
-.comentaire{
+.content {
   text-decoration: none;
   color: #1EDD88;
   position: relative;
-  padding-left: 12%;
+  // padding-left: 12%;
 
 }
-.comentaire:hover{
+.content-layout:hover{
   text-decoration: none;
   color: #1EDD88;
 
