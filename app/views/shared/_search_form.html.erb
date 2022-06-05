@@ -5,14 +5,14 @@
       <i class="fa-solid fa-filter filter-icon"></i>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <%= simple_form_for :search, url: root_path, method: :get, html: { class: "d-flex flex-column d-sm-flex flex-sm-row"}  do |f| %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbar-areas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Areas
             </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <%= f.collection_check_boxes :area, @areas, :name, :name,
+            <ul class="dropdown-menu text-lg-center" aria-labelledby="navbarDropdown">
+              <%= f.collection_check_boxes :areas, @areas, :name, :name,
                 input_html: { class: "tag-selector" },
                 item_wrapper_class: 'tag-item' %>
             </ul>
@@ -21,8 +21,18 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbartheme" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Theme
             </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-              <%= f.collection_check_boxes :theme, @themes, :name, :name,
+            <ul class="dropdown-menu text-lg-center" aria-labelledby="navbarDropdown">
+              <%= f.collection_check_boxes :themes, @themes, :name, :name,
+                input_html: { class: "tag-selector" },
+                item_wrapper_class: 'tag-item' %>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbartheme" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Duration
+            </a>
+            <ul class="dropdown-menu text-lg-center" aria-labelledby="navbarDropdown">
+              <%= f.collection_check_boxes :durations, @durations, :days, :itself,
                 input_html: { class: "tag-selector" },
                 item_wrapper_class: 'tag-item' %>
             </ul>
