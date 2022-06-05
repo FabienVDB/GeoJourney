@@ -1,7 +1,7 @@
 <% default_img = site.itinerary.photo.key %>
 <% img = site.photo.attached? ? site.photo.key : default_img %>
 <div class="card">
-  <div data-controller="comment">
+  <div data-controller="content">
     <div class="card-site">
       <%= cl_image_tag img %>
         <div class="card-site-infos">
@@ -12,9 +12,9 @@
           </div>
         </div>
     </div>
-    <a data-action="click->comment#display" href="#" class="comentaire">more info</a>
+    <a data-action="click->content#display" href="#" class="content">more info</a>
     <div class="info-site">
-        <div class= "d-none" data-comment-target="displayed">
+        <div class= "d-none" data-content-target="displayed">
           <%= site.content %>
         </div>
     </div>

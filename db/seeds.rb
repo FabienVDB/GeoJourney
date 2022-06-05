@@ -230,7 +230,7 @@ puts "  Create Murillo de Gállego site !Real!"
 murillo_de_gallego = Site.create!(itinerary: oloron_jaca,
                                   stage: 6,
                                   name: "Murillo de Gállego",
-                                  summary: "Turbulent seabed",
+                                  summary: "The Pyrenean foreland basin",
                                   location: "Via Ferrata Varela Portillo, 22808 Murillo de Gállego, Spain",
                                   latitude: 42.362603,
                                   longitude: -0.758743,
