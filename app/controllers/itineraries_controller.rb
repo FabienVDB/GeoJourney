@@ -12,8 +12,6 @@ class ItinerariesController < ApplicationController
     end
 
     @itineraries_for_mapbox = itineraries_to_json(@itineraries)
-
-    # @markers = @itineraries_for_mapbox.map { |i| i[:sites] }.flatten
   end
 
   def show
@@ -52,12 +50,25 @@ class ItinerariesController < ApplicationController
     filtered_itineraries
   end
 
+  # def itineraries_to_json(itineraries)
+  #   itineraries.map do |itinerary|
+  #     {
+  #       name: itinerary.name,
+  #       summary: itinerary.summary,
+  #       sites: itinerary.sites.sort_by(&:stage).map { |s| { stage: s.stage, lat: s.latitude, lng: s.longitude } },
+  #       # info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary }),
+  #       info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
+  #       image_url: helpers.cl_image_path(itinerary.photo.key)
+  #     }
+  #   end.to_json
+  # end
+
   def itineraries_to_json(itineraries)
     itineraries.map do |itinerary|
       {
         name: itinerary.name,
         summary: itinerary.summary,
-        sites: itinerary.sites.sort_by(&:stage).map { |s| { stage: s.stage, lat: s.latitude, lng: s.longitude } },
+        coords: itinerary.sites.sort_by(&:stage).map { |s| [s.longitude,  s.latitude] },
         # info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary }),
         info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
         image_url: helpers.cl_image_path(itinerary.photo.key)
