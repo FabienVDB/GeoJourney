@@ -3,18 +3,17 @@
 <div class="card-index">
   <div class="card-itinerary" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= img_url %>')">
     <%= link_to "#" do %>
-      <i class="fa-regular fa-heart"></i>  <% end %>
-      <%= itinerary.name %>
+      <i class="fa-regular fa-heart"></i>
+    <% end %>
+    <%= itinerary.name %>
     <div class="duration-days">
       <i class="fa-solid fa-calendar-minus"></i>
-      <p><%=itinerary.duration_in_days%> days</p>
+      <p><%=itinerary.duration_in_days%> day<%= itinerary.duration_in_days > 1 ? "s" : "" %></p>
     </div>
 
     <%= link_to "", itinerary_path(itinerary), class: "stretched-link" %>
   </div>
   <div class="summary">
     <%= itinerary.summary%>
-
   </div>
-  <hr class="dropdown-divider">
 </div>
