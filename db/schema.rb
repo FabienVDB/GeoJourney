@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_093641) do
+ActiveRecord::Schema.define(version: 2022_06_06_102138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 2022_06_03_093641) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "duration_in_days"
+    t.bigint "user_id"
     t.index ["area_id"], name: "index_itineraries_on_area_id"
     t.index ["theme_id"], name: "index_itineraries_on_theme_id"
+    t.index ["user_id"], name: "index_itineraries_on_user_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -100,5 +102,6 @@ ActiveRecord::Schema.define(version: 2022_06_03_093641) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "itineraries", "areas"
   add_foreign_key "itineraries", "themes"
+  add_foreign_key "itineraries", "users"
   add_foreign_key "sites", "itineraries"
 end

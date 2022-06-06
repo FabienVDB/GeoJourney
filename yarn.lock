@@ -6509,12 +6509,19 @@ statuses@2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+
 stimulus-carousel@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/stimulus-carousel/-/stimulus-carousel-4.0.0.tgz#231d8dbcb5ecefc5a252ae34982fd565f999e681"
   integrity sha512-AW0jC5xJ6IJ6HWo9dxVLmv02xvaYvLR5TAM8EKtH0lrqDqarzlOEVgnBefKsIqP1KMuIv74TtWKwwaY7ikfweQ==
   dependencies:
     swiper "^7.4.1"
+
+stimulus-rails-nested-form@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-rails-nested-form/-/stimulus-rails-nested-form-4.0.0.tgz#cb9295a70081b6e1b9b05250533b1f92a9902d3b"
+  integrity sha512-nE2dM0glgjBvUq/gzORJ+94wITOijoYMZWIrkXSNNH8BpELwH8zg9fuad0X+ZBrhjQrYuNW2R0zLgX69oIzMvw==
+
 
 stimulus@^3.0.1:
   version "3.0.1"

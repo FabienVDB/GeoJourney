@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h1>Create your itinerary : </h1>
+  <%= simple_form_for @itinerary do |f| %>
+    <%= f.input :name %>
+    <%= f.input :summary %>
+    <%= f.input :content %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :duration_in_days, collection: 1..5, include_blank: false %>
+    <%= f.association :area, include_blank: false %>
+    <%= f.association :theme, include_blank: false %>
+    <hr>
+    <h3>Add a site : </h3>
+    <%= f.simple_fields_for :sites, @site do |site_form| %>
+      <%= site_form.input :name %>
+      <%= site_form.input :summary %>
+      <%= site_form.input :stage, collection: 1..10, include_blank: false %>
+      <%= site_form.input :location %>
+      <%= site_form.input :content %>
+      <%= site_form.input :duration_in_minutes, collection: 0..200, include_blank: false %>
+      <%= site_form.input :photo, as: :file %>
+    <% end %>
+
+  <%= f.submit "Create your itinerary", class: "btn btn primary" %>
+  <% end %>
+</div>

@@ -14,11 +14,46 @@ class ItinerariesController < ApplicationController
     @itineraries_for_mapbox = itineraries_to_json(@itineraries)
   end
 
+  def new
+    @itinerary = Itinerary.new
+    @site = Site.new
+  end
+
+  def create
+    @itinerary = Itinerary.new(itinerary_params)
+    @itinerary.user = current_user
+    if @itinerary.save
+      redirect_to itinerary_path(@itinerary)
+    else
+      render :new
+    end
+  end
+
   def show
     @itinerary = Itinerary.find(params[:id])
   end
 
+  def update
+    if user.update(user_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def user_params
+    params
+      .require(:user)
+      .permit(
+        sites_attributes: %i[id _destroy]
+      )
+  end
+
+  def itinerary_params
+    params.require(:itinerary).permit(:name, :summary, :duration_in_days, :photo, :area_id, :theme_id, sites_attributes: [:id, :name, :stage, :location, :content, :photo, :summary, :duration_in_minutes])
+  end
 
   def filter_itineraries
     areas = selections(:areas, :name)
@@ -66,12 +101,13 @@ class ItinerariesController < ApplicationController
   def itineraries_to_json(itineraries)
     itineraries.map do |itinerary|
       {
+        id: itinerary.id,
         name: itinerary.name,
         summary: itinerary.summary,
-        coords: itinerary.sites.sort_by(&:stage).map { |s| [s.longitude,  s.latitude] },
+        coords: itinerary.sites.sort_by(&:stage).map { |s| [s.longitude, s.latitude] },
         # info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary }),
         info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
-        image_url: helpers.cl_image_path(itinerary.photo.key)
+        image_url: itinerary.photo.attached? ? helpers.cl_image_path(itinerary.photo.key) : helpers.cl_image_path(Itinerary.first.photo.key)
       }
     end.to_json
   end

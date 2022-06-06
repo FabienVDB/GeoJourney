@@ -9,7 +9,7 @@
   text-decoration: none;
   left: calc(50% - 43px);
   bottom: 50px;
-  z-index: 1;
+  z-index: 4;
   position: fixed;
 }
 
@@ -17,7 +17,7 @@
   position: absolute;
   left: 150px;
   bottom: 50px;
-  z-index: 1;
+  z-index: 4;
 }
 
 .btn-map:hover {

@@ -7,6 +7,8 @@ export default class extends Controller {
     markers: Array,
   }
 
+  static targets = ['map']
+
   initialize() {
     this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving";
     this.apiKey = "pk.eyJ1IjoiZmFiaWVudmRiIiwiYSI6ImNsMzJ2NXNvbTAxaGYzanA2dG93dGFoajUifQ.7Ytq_kjops26CIM84GI6mQ";
@@ -15,29 +17,18 @@ export default class extends Controller {
   async connect() {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/satellite-streets-v11"
+      container: this.mapTarget,
+      // style: "mapbox://styles/mapbox/satellite-streets-v11"
+      style: "mapbox://styles/fabienvdb/cl42opbkr004114p7gs9ojuyn"
     })
 
-    // this.itineraries = this.#reconstructItineraries(JSON.parse(this.data.get("itineraries")))
+    this.element.classList.add("d-none")
     this.itineraries = JSON.parse(this.data.get("itineraries"))
     await this.#displayRoutes(this.itineraries)
     this.#fitMapToItineraries(this.itineraries)
 
     this.#addFirstSiteMarkersToMap(this.itineraries)
   }
-
-
-  // #reconstructItineraries(itineraries) {
-  //   const itineraries_coords = itineraries.map(i => i.sites.sort((s1, s2) => s1.stage - s2.stage).map(s => [s.lng, s.lat] ))
-  //   return itineraries.map((itinerary, index) => {
-  //     return {name: itinerary.name,
-  //             summary: itinerary.summary,
-  //             info_window: itinerary.info_window,
-  //             image_url: itinerary.image_url,
-  //             coords: itineraries_coords[index]}
-  //   });
-  // }
 
   async #displayRoutes(itineraries) {
     for (const itinerary of itineraries) {
