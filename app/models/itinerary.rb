@@ -1,10 +1,12 @@
 class Itinerary < ApplicationRecord
   belongs_to :area
   belongs_to :theme
-  # belongs_to :user
-  has_many :sites, -> { order(:stage) }, dependent: :destroy
+  belongs_to :user
+  has_many :sites, dependent: :destroy
+  #has_many :sites, -> { order(:stage) }, dependent: :destroy
   # belongs_to :favorite, optional: false, dependent: :destroy
   has_one_attached :photo
+  accepts_nested_attributes_for :sites, allow_destroy: true
 
   validates :area, presence: true
   validates :theme, presence: true
