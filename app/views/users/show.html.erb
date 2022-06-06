@@ -1,0 +1,31 @@
+<%= render 'shared/navbar' %>
+<%# <%= render "shared/burger_menu" %>
+<div class="fav-content">
+  <div class="fav-content-header">
+    <h2>My Favorites</h2>
+  </div>
+
+  <div data-controller="carousel" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+  </div>
+
+
+
+  <%# <div class="fav-content-body">
+    <div class="fav-content-body-container">
+      <% if @favorites.empty? %>
+        <%# <div class="fav-content-body-container-empty">
+          <p>You don't have any favorite yet</p>
+        </div>
+      <% else %>
+        <%# <% @favorites.each do |favorite| %>
+          <%# <%= render "shared/card_favorite", favorite: favorite %>
+        <%# <% end %>
+      <%# <% end %>
+    <%# </div>
+  </div>  %>
+</div>

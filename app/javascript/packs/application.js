@@ -8,15 +8,19 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+// import 'swiper/css/bundle'
 
-import { noCloseDropdown } from "../../../app/javascript/component/noCloseDropdown.js"
+import { noCloseDropdown } from "../../../app/javascript/component/noCloseDropdown.js";
+import { btnMenu } from '../component/btn-menu';
 
 document.addEventListener('turbolinks:load', () => {
   noCloseDropdown();
+  btnMenu();
 })
