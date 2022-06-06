@@ -1,6 +1,6 @@
 <% default_img = site.itinerary.photo.key %>
 <% img = site.photo.attached? ? site.photo.key : default_img %>
-<div class="card">
+<div class="card-site-parent">
   <div data-controller="content">
     <div class="card-site">
       <%= cl_image_tag img %>

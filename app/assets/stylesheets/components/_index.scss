@@ -6,6 +6,7 @@
 @import 'cards_layout';
 @import "card";
 @import "btn";
+@import "favorites";
 
 @import "search_bar";
 @import "map";
@@ -13,17 +14,19 @@
 // font
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-$main-color:  #1EDD88;
+$main-color: #15a866;
 
 body{
-background-color: rgb(255, 255, 255);
+// background-color:#F8F9FA;
 font-family: 'Montserrat', sans-serif;
+background: linear-gradient(#F8F9FA,#e1ffba)
 }
 
 h1{
-  color: #1EDD88;
+  color: #15a866;
   text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
   font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
 }
 
 a {

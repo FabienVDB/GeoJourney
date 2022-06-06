@@ -13,6 +13,20 @@
   // border-bottom-right-radius: 10px;
 }
 
+.card-site-parent{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-top: -10%;
+
+}
+
+
 .card-itinerary-child {
   height: 180px;
 	background: #FFF;
@@ -28,9 +42,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
 	cursor: pointer;
 	position: relative;
+  margin-top: 20px;
 }
 
 .card-itinerary-child:hover{
@@ -64,7 +79,7 @@
 }
 
 .favorite-link {
-	z-index: 1;
+	z-index: 2;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -76,13 +91,11 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 10;
+	z-index: 1;
 	opacity: 0;
 }
 
-.heart {
-  color: pink;
-}
+
 
 .summary {
   width: 300px;
@@ -93,12 +106,10 @@
   opacity: 0.8;
 }
 
-// .fa-heart{
-//   position: relative;
-//   left: 266px;
-//   top: -61px;
-//   color: white;
-// }
+.fa-heart{
+  color:  #15a866;
+
+}
 
 // .fa-plus{
 //   position: relative;
@@ -106,16 +117,20 @@
 //   color: white;
 // }
 
+.content:hover{
+  color: #1EDD88;
+  opacity: 0.5;
+}
 
 
 
 .dropdown-divider {
   margin-left: 10%;
   margin-right: 10%;
-  color: #1EDD88;
+  color: #15a866;
 }
 .fa-calendar-minus{
-color: #1EDD88;
+color: #15a866;
 
 }
 
@@ -146,30 +161,33 @@ color: #1EDD88;
   color: rgb(35, 35, 35);
   opacity: 0.8;
   text-align: justify;
-  color:  #14ab67;
+  color:  black;
+  opacity: 0.9;
 }
 
 .content {
   text-decoration: none;
-  color: #1EDD88;
+  color: #15a866;
   position: relative;
   // padding-left: 12%;
 
 }
 .content-layout:hover{
   text-decoration: none;
-  color: #1EDD88;
+  color: #15a866;
 
 }
 
 .card-site {
   overflow: hidden;
-  height: 120px;
-  background: rgb(255, 255, 255);
+  height: 130px;
+  background: #F3FAED;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin-top: 5%;
+  border-radius: 5px;
+
 }
 
 .card-site img {
@@ -190,7 +208,7 @@ color: #1EDD88;
 }
 
 .card-site p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -210,12 +228,13 @@ color: #1EDD88;
   color: #232323;
   opacity: 0.8;
   text-align: center;
-  color: #14ab67;
+  color: black;
   letter-spacing: 2px;
+  opacity: 0.9;
 }
 .fa-clock{
   padding-top: 10px;
-  color: #14ab67;
+  color: #15a866;
 }
 
 .duration-minutes p{
