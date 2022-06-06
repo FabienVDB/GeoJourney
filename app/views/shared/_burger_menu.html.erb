@@ -10,7 +10,16 @@
         <button class="btn-open-menu"><span></span><span></span><span></span></button>
       </div>
     <% else %>
-      <%= link_to new_user_session_path do %>
-        <%= image_tag "avatar.jpg", class: "avatar position-absolute" %>
-      <% end %>
+      <div class="text-menu">
+        <ul class="menu">
+          <li><%= link_to "Sign in", new_user_session_path,class:"menuLink active"%></li>
+          <li><%= link_to "Sign up", new_user_registration_path,class:"menuLink active"%></li>
+        </ul>
+      </div>
+      <div class="menu-btn">
+        <button class="btn-open-menu"><span></span><span></span><span></span></button>
+      </div>
     <% end %>
+
+      <%# <%= link_to new_user_session_path do %>
+        <%# <%= image_tag "avatar.jpg", class: "avatar position-absolute" %>
