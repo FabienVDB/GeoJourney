@@ -1,34 +1,19 @@
 <%= render 'shared/navbar' %>
 <%= render "shared/search_form"%>
 
-<div data-controller="mapboxapi"
-     data-mapboxapi-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-     data-mapboxapi-itineraries="<%= @itineraries_for_mapbox %>">
-  <%# data-action="load@window->mapboxapi#display" %>
-  <p data-action="load@window->mapboxapi#display"></p>
-</div>
-
-
-
-
+<div class="content-wrapper">
   <div data-controller="mapdisplay">
-    <a data-action="click->mapdisplay#display" href="/" class="btn-map">Map</a>
-    <div class="map-container">
-      <div class= "d-none" data-mapdisplay-target="displayed" style="height: 350px"
-        data-controller="mapbox"
-        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        data-mapbox-itineraries="<%= @itineraries_for_mapbox %>">
-      </div>
+    <a data-action="click->mapdisplay#display" href="/" class="btn-map" data-mapdisplay-target="btn">Map</a>
+    <div class= "map-container" data-controller="mapbox"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-mapbox-itineraries="<%= @itineraries_for_mapbox %>" data-mapdisplay-target="mapcontainer">
+        <div data-mapbox-target="map" style="height: 100%; width: 100%"></div>
+    </div>
+    <div class="cards" data-mapdisplay-target="cardscontainer">
+      <% @itineraries.each do |itinerary| %>
+        <%= render "shared/card_itinerary_index", itinerary: itinerary %>
+      <% end %>
     </div>
   </div>
-
-
-<div class="map-wrapper">
-  <div class="cards">
-    <% @itineraries.each do |itinerary| %>
-      <%= render "shared/card_itinerary_index", itinerary: itinerary %>
-    <% end %>
-  </div>
-
 
 </div>
