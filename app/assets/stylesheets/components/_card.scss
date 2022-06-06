@@ -17,6 +17,11 @@
   margin-top: 5%;
   position: relative;
 }
+.card{
+  margin: 20px;
+  border: none;
+  color: #14ab67;
+}
 
 .card-itinerary:hover{
   opacity: 0.5;
@@ -50,6 +55,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  border: none;
 }
 
 .dropdown-divider{
@@ -144,6 +150,7 @@ color: #1EDD88;
 .card-site .card-site-infos {
   padding: 16px;
   padding-left: 2%;
+  color: #232323;
 
 }
 
