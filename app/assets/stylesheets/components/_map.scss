@@ -1,16 +1,28 @@
-.map-wrapper {
+.content-wrapper {
   position: relative;
   width: 100%;
 }
 
 .map-container {
-  position: relative;
+  position: absolute;
   top: 0;
-  bottom: 0;
+  height: 100vh;
   left: 0;
-  right: 0;
-  // transition: 0.3s;
+  width: 100%;
+  z-index: 3;
+  // margin-top: -50px;
+  // transition: opacity 0.3s ease;
 }
+
+.box-red {
+  background-color: red;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 
 .mapboxgl-popup .mapboxgl-popup-anchor-top-right {
   max-width: 50px;

@@ -101,6 +101,7 @@ class ItinerariesController < ApplicationController
   def itineraries_to_json(itineraries)
     itineraries.map do |itinerary|
       {
+        id: itinerary.id,
         name: itinerary.name,
         summary: itinerary.summary,
         coords: itinerary.sites.sort_by(&:stage).map { |s| [s.longitude, s.latitude] },
