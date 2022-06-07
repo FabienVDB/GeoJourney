@@ -19,8 +19,10 @@ import "bootstrap"
 
 import { noCloseDropdown } from "../../../app/javascript/component/noCloseDropdown.js";
 import { btnMenu } from '../component/btn-menu';
+import { heart } from "../component/heart.js"
 
 document.addEventListener('turbolinks:load', () => {
   noCloseDropdown();
   btnMenu();
+  heart();
 })
