@@ -108,7 +108,7 @@
 }
 
 .fa-heart{
-  color:  #15a866;
+  color:  $main-color;
 
 }
 
@@ -119,7 +119,7 @@
 // }
 
 .content:hover{
-  color: #1EDD88;
+  color: $main-color;
   opacity: 0.5;
 }
 
@@ -128,12 +128,13 @@
 .dropdown-divider {
   margin-left: 10%;
   margin-right: 10%;
-  color: #15a866;
+  color: $main-color;
 }
 .fa-calendar-minus{
-color: #15a866;
-
+color: $main-color;
 }
+
+
 
 .card-lead{
   width: 300px;
@@ -168,14 +169,14 @@ color: #15a866;
 
 .content {
   text-decoration: none;
-  color: #15a866;
+  color: $main-color;
   position: relative;
   // padding-left: 12%;
 
 }
 .content-layout:hover{
   text-decoration: none;
-  color: #15a866;
+  color:$main-color;
 
 }
 
@@ -235,7 +236,7 @@ color: #15a866;
 }
 .fa-clock{
   padding-top: 10px;
-  color: #15a866;
+  color: $main-color;
 }
 
 .duration-minutes p{

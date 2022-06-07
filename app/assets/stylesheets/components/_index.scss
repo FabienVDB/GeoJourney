@@ -8,6 +8,7 @@
 @import "btn";
 @import "favorites";
 @import "heart";
+@import "display";
 
 @import "search_bar";
 @import "map";
@@ -15,16 +16,23 @@
 // font
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-$main-color: #15a866;
+
 
 body{
-// background-color:#F8F9FA;
+
 font-family: 'Montserrat', sans-serif;
-background: linear-gradient(#F8F9FA,#edffd6,#e1ffba)
+
+background: #F7FAF4;
 }
 
 h1{
-  color: #15a866;
+  color: $main-color;
+  text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 20px;
+}
+h2{
+  color: $main-color;
   text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
   font-family: 'Montserrat', sans-serif;
   margin-top: 20px;

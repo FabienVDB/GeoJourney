@@ -17,7 +17,7 @@
     <div>
       <%= @itinerary.summary%>
     </div>
-    <a data-action="click->content#display" href="#" class="content">more info</a>
+    <a data-action="click->content#display" data-content-target="btn" href="#" class="content">more info</a>
     <div class= "d-none" data-content-target="displayed">
       <div class="card-description ">
         <%=@itinerary.content %>

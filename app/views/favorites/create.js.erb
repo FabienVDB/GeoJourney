@@ -1,0 +1,6 @@
+function displayCard(itineraryId, html){
+  const card = document.querySelector(`#itinerary-${itineraryId}`);
+  card.outerHTML = html;
+
+}
+displayCard(<%= @itinerary.id %>, '<%= j render "shared/card_itinerary_index", itinerary: @itinerary  %>')
