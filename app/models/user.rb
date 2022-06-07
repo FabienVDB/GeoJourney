@@ -4,6 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :itineraries
-  accepts_nested_attributes_for :itineraries, reject_if: :all_blank, allow_destroy: true
+  has_many :itineraries, dependent: :destroy
 end

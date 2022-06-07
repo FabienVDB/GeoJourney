@@ -2,7 +2,7 @@
       <div class="text-menu">
         <ul class="menu">
           <li><%=link_to "Profile", user_path(current_user),class:"menuLink active"%></li>
-          <li><%= link_to "Create", user_path(current_user),class:"menuLink active"%></li>
+          <li><%= link_to "Create", new_itinerary_path,class:"menuLink active"%></li>
           <li><%= link_to "Disconnect", user_path(current_user),class:"menuLink active"%></li>
         </ul>
       </div>
