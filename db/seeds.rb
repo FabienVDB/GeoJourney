@@ -22,11 +22,18 @@ puts "Clear areas"
 Area.destroy_all # if Rails.env.development?
 puts "Clear themes"
 Theme.destroy_all # if Rails.env.development?
+puts "Clear users"
+User.destroy_all
 puts "Clear complete"
 
 Dir[File.join(Rails.root, 'db', 'seeds/*', '*.rb')].each do |seed|
   load seed
 end
+
+puts "Create users"
+fabien = User.create!(email: "fabvdb@hotmail.com", password: "secret")
+kalid = User.create!(email: "zanounekalid@gmail.com", password: "secret")
+kevin = User.create!(email: "herezy2006@gmail.com", password: "secret")
 
 puts "Create themes"
 geotraverse = Theme.create!(name: "Geotraverse",
@@ -44,6 +51,7 @@ provence = Area.create!(name: "Provence")
 
 puts "Create Western Switzerland Geotraverse itinerary !Real!"
 western_switzerland = Itinerary.create!(name: "Western Switzerland Geotraverse",
+                                        user: fabien,
                                         theme: geotraverse,
                                         area: western_alps,
                                         duration_in_days: 2,
@@ -135,6 +143,7 @@ puts "Western Switzerland Geotraverse itinerary complete"
 
 puts "Create Oloron Jaca Geotraverse itinerary !Real!"
 oloron_jaca = Itinerary.create!(name: "Oloron-Jaca Geotraverse",
+                                user: fabien,
                                 theme: geotraverse,
                                 area: pyrenees,
                                 duration_in_days: 3,
@@ -246,6 +255,7 @@ puts "Oloron Jaca Geotraverse itinerary complete"
 
 puts "Create Basque Country Geotraverse itinerary !Fake!"
 basque_country = Itinerary.create!(name: "Basque Country Geotraverse",
+                                   user: kalid,
                                    theme: geotraverse,
                                    area: pyrenees,
                                    duration_in_days: 2,
@@ -294,6 +304,7 @@ puts "Basque Country Geotraverse itinerary complete"
 
 puts "Create Lannemezan Barbastro itinerary !Fake!"
 lannemezan_barbastro = Itinerary.create!(name: "Lannemezan-Barbastro Geotraverse",
+                                         user: kalid,
                                          theme: geotraverse,
                                          area: pyrenees,
                                          duration_in_days: 3,
@@ -345,6 +356,7 @@ puts "Lannemezan Barbastro itinerary complete"
 
 puts "Create Foix Berga itinerary !Fake!"
 foix_berga = Itinerary.create!(name: "Foix-Berga Geotraverse",
+                               user: kevin,
                                theme: geotraverse,
                                area: pyrenees,
                                duration_in_days: 3,
@@ -404,6 +416,7 @@ puts "Foix Berga itinerary complete"
 
 puts "Create Lyon Torino itinerary !Fake!"
 lyon_torino = Itinerary.create!(name: "Lyon-Torino Geotraverse",
+                                user: kevin,
                                 theme: geotraverse,
                                 area: western_alps,
                                 duration_in_days: 4,
@@ -471,6 +484,7 @@ puts "Lyon Torino itinerary complete"
 
 puts "Create Bordeaux urban itinerary !Real!"
 bordeaux = Itinerary.create!(name: "Bordeaux Urban Geology",
+                             user: fabien,
                              theme: urban_geology,
                              area: aquitaine_basin,
                              duration_in_days: 1,
@@ -532,6 +546,7 @@ puts "Bordeaux urban itinerary complete"
 
 puts "Create Paris urban itinerary !Fake!"
 paris = Itinerary.create!(name: "Paris Urban Geology",
+                          user: kalid,
                           theme: urban_geology,
                           area: paris_basin,
                           duration_in_days: 1,
@@ -567,6 +582,7 @@ puts "Paris urban itinerary complete"
 
 puts "Create Marseille urban itinerary !Fake!"
 marseille = Itinerary.create!(name: "Marseille Urban Geology",
+                              user: kalid,
                               theme: urban_geology,
                               area: provence,
                               duration_in_days: 1,
@@ -602,6 +618,7 @@ puts "Marseille urban itinerary complete"
 
 puts "Create Garonne terraces itinerary !Fake!"
 garonne_terraces = Itinerary.create!(name: "Garonne terraces",
+                                     user: kevin,
                                      theme: fluvial_landforms,
                                      area: aquitaine_basin,
                                      duration_in_days: 2,
