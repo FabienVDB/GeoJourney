@@ -1,0 +1,16 @@
+<div class="nested-form-wrapper" data-new-record="<%= site_form.object.new_record? %>">
+
+
+  <%= site_form.input :name %>
+
+  <%= site_form.input :summary %>
+  <%= site_form.input :stage, collection: 1..10, include_blank: false %>
+  <%= site_form.input :location %>
+  <%= site_form.input :content %>
+  <%= site_form.input :duration_in_minutes, collection: 0..200, include_blank: false %>
+  <%= site_form.input :photo, as: :file %>
+
+  <button type="button" data-action="nested-form#remove">Remove site</button>
+
+    <%= site_form.hidden_field :_destroy %>
+</div>

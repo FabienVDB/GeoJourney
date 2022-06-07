@@ -1,25 +1,71 @@
-<div class="container mt-5">
-  <h1>Create your itinerary : </h1>
-  <%= simple_form_for @itinerary do |f| %>
-    <%= f.input :name %>
-    <%= f.input :summary %>
-    <%= f.input :content %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :duration_in_days, collection: 1..5, include_blank: false %>
-    <%= f.association :area, include_blank: false %>
-    <%= f.association :theme, include_blank: false %>
-    <hr>
-    <h3>Add a site : </h3>
-    <%= f.simple_fields_for :sites, @site do |site_form| %>
-      <%= site_form.input :name %>
-      <%= site_form.input :summary %>
-      <%= site_form.input :stage, collection: 1..10, include_blank: false %>
-      <%= site_form.input :location %>
-      <%= site_form.input :content %>
-      <%= site_form.input :duration_in_minutes, collection: 0..200, include_blank: false %>
-      <%= site_form.input :photo, as: :file %>
-    <% end %>
+<%= render 'shared/navbar' %>
 
-  <%= f.submit "Create your itinerary", class: "btn btn primary" %>
-  <% end %>
+<div class="container mt-5 accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h1 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Create your itinerary :
+      </button>
+    </h1>
+    <%= simple_form_for @itinerary, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.input :name %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.input :summary %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.input :content %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.input :photo, as: :file %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.input :duration_in_days, collection: 1..5, include_blank: false %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.association :area, include_blank: false %>
+        </div>
+      </div>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= f.association :theme, include_blank: false %>
+        </div>
+      </div>
+      <hr>
+
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <h3 class="accordion-header" id="headingOne"> Add a site :
+            <div data-nested-form-target="target"></div>
+            <button class="accordion-button" type="button" data-action="nested-form#add" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Add a site
+            </button>
+          </h3>
+        </div>
+      </div>
+
+        <template data-nested-form-target="template">
+          <%= f.simple_fields_for :sites, @site, child_index: "NEW_RECORD" do |site_form| %>
+            <%= render "sites_form", site_form: site_form %>
+          <% end %>
+        </template>
+
+
+
+
+    <%= f.submit "Create your itinerary", class: "btn btn primary" %>
+    <% end %>
+  </div>
 </div>
