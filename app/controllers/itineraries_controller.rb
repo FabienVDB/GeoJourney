@@ -31,6 +31,7 @@ class ItinerariesController < ApplicationController
 
   def show
     @itinerary = Itinerary.find(params[:id])
+    @sites_for_mapbox = sites_to_json(@itinerary)
   end
 
   def update
@@ -105,11 +106,26 @@ class ItinerariesController < ApplicationController
         name: itinerary.name,
         summary: itinerary.summary,
         coords: itinerary.sites.sort_by(&:stage).map { |s| [s.longitude, s.latitude] },
-        # info_window: render_to_string(partial: "shared/card_itinerary_index", locals: { itinerary: itinerary }),
         info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
         image_url: itinerary.photo.attached? ? helpers.cl_image_path(itinerary.photo.key) : helpers.cl_image_path(Itinerary.first.photo.key)
       }
     end.to_json
+  end
+
+  def sites_to_json(itinerary)
+    output = {}
+    output[:sites] = itinerary.sites.map do |site|
+      {
+        id: site.id,
+        name: site.name,
+        summary: site.summary,
+        coords: [site.longitude, site.latitude],
+        info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
+        image_url: site.photo.attached? ? helpers.cl_image_path(site.photo.key) : helpers.cl_image_path(Itinerary.first.sites.first.photo.key)
+      }
+    end
+    output[:coords] = itinerary.sites.sort_by(&:stage).map { |s| [s.longitude, s.latitude] }
+    output.to_json
   end
 
   class Duration

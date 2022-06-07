@@ -11,12 +11,11 @@ export default class extends Controller {
 
   initialize() {
     this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving";
-    this.itineraries = JSON.parse(this.data.get("itineraries"))
   }
 
   async connect() {
+    this.itineraries = JSON.parse(this.data.get("itineraries"))
     this.itinerariesRoutes = await this.#fetchItinerariesRoutes(this.itineraries)
-    console.log(this.itinerariesRoutes)
   }
 
   getItinerariesRoutes() {

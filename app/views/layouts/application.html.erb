@@ -21,11 +21,7 @@
   </head>
 
   <body>
-    <div data-controller="mapboxapi"
-     data-mapboxapi-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-     data-mapboxapi-itineraries="<%= @itineraries_for_mapbox %>">
-      <%= render 'shared/flashes' %>
-      <%= yield %>
-    </div>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
   </body>
 </html>
