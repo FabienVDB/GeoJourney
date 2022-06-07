@@ -7,7 +7,9 @@ export default class extends Controller {
   // }
   display(event){
       event.preventDefault()
-      this.btnTarget.innerHTML = this.btnTarget.innerHTML === "Map" ? "List" : "Map";
+      const mapBtnHTML = '<i class="fa-solid fa-map"></i> Map'
+      const listBtnHTML = '<i class="fa-solid fa-list"></i> List'
+      this.btnTarget.innerHTML = this.btnTarget.innerHTML ===  mapBtnHTML ? listBtnHTML : mapBtnHTML;
       this.#toggleScroll()
       this.mapcontainerTarget.classList.toggle("d-none")
       this.cardscontainerTarget.classList.toggle("d-none")

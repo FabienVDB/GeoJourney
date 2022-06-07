@@ -4,7 +4,7 @@
 
 <div class="content-wrapper">
   <div data-controller="mapdisplay">
-    <a data-action="click->mapdisplay#display" href="/" class="btn-map" data-mapdisplay-target="btn">Map</a>
+    <a data-action="click->mapdisplay#display" href="/" class="btn-map" data-mapdisplay-target="btn"><i class="fa-solid fa-map"></i> Map</a>
     <div class= "map-container" data-controller="mapbox"
           data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
           data-mapbox-itineraries="<%= @itineraries_for_mapbox %>" data-mapdisplay-target="mapcontainer">
@@ -16,3 +16,4 @@
       <% end %>
     </div>
   </div>
+</div>
