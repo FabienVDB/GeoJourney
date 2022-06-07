@@ -1,31 +1,18 @@
 <%= render 'shared/navbar' %>
-<%# <%= render "shared/burger_menu" %>
-<div class="fav-content">
-  <div class="fav-content-header">
-    <h2>My Favorites</h2>
-  </div>
-
-  <div data-controller="carousel" class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
+<%= render "shared/burger_menu" %>
+<div data-controller="carddisplay">
+  <a data-action="click->carddisplay#display" data-carddisplay-target="bouton" data-state="closed" href="#" class="favorite">
+    <h2>
+      My Favorite<%= @favorites.length > 1 ? "s" : ""%>
+      <i class="fa-solid fa-arrow-down"></i>
+      <i class='fa-solid fa-arrow-up d-none'></i>
+    </h2>
+  </a>
+  <div class= "d-none" data-carddisplay-target="cardcontainer">
+    <div class="cards">
+      <% @favorites.each do |favorite| %>
+        <%= render 'shared/card_itinerary_index', itinerary: favorite.itinerary %>
+      <% end %>
     </div>
   </div>
-
-
-
-  <%# <div class="fav-content-body">
-    <div class="fav-content-body-container">
-      <% if @favorites.empty? %>
-        <%# <div class="fav-content-body-container-empty">
-          <p>You don't have any favorite yet</p>
-        </div>
-      <% else %>
-        <%# <% @favorites.each do |favorite| %>
-          <%# <%= render "shared/card_favorite", favorite: favorite %>
-        <%# <% end %>
-      <%# <% end %>
-    <%# </div>
-  </div>  %>
 </div>

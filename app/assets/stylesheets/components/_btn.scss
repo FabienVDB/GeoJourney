@@ -190,7 +190,7 @@
   top: 0;
   left: -100%;
   z-index: 18;
-  background: rgba($color: #ffffff, $alpha: 0.9);
+  background: rgba($color: rgb(35, 118, 30) , $alpha: 0.9);
   height: 100vh;
   width: 100%;
   flex-direction: column;
@@ -207,7 +207,7 @@
       font-size: 2em;
       margin-top: 10px;
       margin-bottom: 10px;
-      color: $main-color;
+      color: white;
     }
   }
 }

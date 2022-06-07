@@ -34,26 +34,10 @@ class ItinerariesController < ApplicationController
     @sites_for_mapbox = sites_to_json(@itinerary)
   end
 
-  def update
-    if user.update(user_params)
-      redirect_to users_path
-    else
-      render :edit
-    end
-  end
-
   private
 
-  def user_params
-    params
-      .require(:user)
-      .permit(
-        sites_attributes: %i[id _destroy]
-      )
-  end
-
   def itinerary_params
-    params.require(:itinerary).permit(:name, :summary, :duration_in_days, :photo, :area_id, :theme_id, sites_attributes: [:id, :name, :stage, :location, :content, :photo, :summary, :duration_in_minutes])
+    params.require(:itinerary).permit(:name, :summary, :duration_in_days, :photo, :area_id, :theme_id, sites_attributes: [:id, :name, :stage, :location, :content, :photo, :summary, :duration_in_minutes, :_destroy])
   end
 
   def filter_itineraries

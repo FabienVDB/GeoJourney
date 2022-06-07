@@ -1,17 +1,19 @@
 <% default_img_url = cl_image_path(Itinerary.first.photo.key, width: 200, crop: :fill) %>
 <% img_url = itinerary.photo.attached? ? cl_image_path(itinerary.photo.key, width: 200, crop: :fill) : default_img_url %>
-<div class ="card-itinerary-parent">
+<div class ="card-itinerary-parent" id="itinerary-<%= itinerary.id%>">
   <div class="card-itinerary-child" style="background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('<%= img_url %>')">
     <%# !! Change link below to favorites path !! %>
-    <%= link_to "#", class: "favorite-link" do%>
-      <i class="fa-regular fa-heart heart"></i>
+    <div data-controller="heart">
+    <% if current_user.favorites.find_by(itinerary: itinerary) %>
+      <%= link_to favorite_path(current_user.favorites.find_by(itinerary: itinerary)), method: :delete, class: "favorite-link", remote: true do%>
+       <i  data-heart-target="cardHeart" data-action="click->heart#active" class="fa-solid  active fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to itinerary_favorites_path(itinerary), method: :post, class: "favorite-link", remote: true do%>
+       <i  data-heart-target="cardHeart" data-action="click->heart#active" class="fa-regular fa-heart heart"></i>
+      <% end %>
     <% end %>
-  <div class="m-favorite">
-    <div class="m-favorite__icon"></div>
-    <span class="m-favorite__smallIcon"></span>
-    <span class="m-favorite__smallIcon"></span>
-    <span class="m-favorite__smallIcon"></span>
-  </div>
+    </div>
     <p><%= itinerary.name %></p>
     <div class="duration-days">
       <i class="fa-solid fa-calendar-minus"></i>
