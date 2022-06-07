@@ -4,13 +4,17 @@
   <div class="card-itinerary-child" style="background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('<%= img_url %>')">
     <%# !! Change link below to favorites path !! %>
     <div data-controller="heart">
-    <% if current_user.favorites.find_by(itinerary: itinerary) %>
+    <% if !user_signed_in? %>
+      <%= link_to new_user_session_path, class: "favorite-link" do %>
+       <i data-heart-target="cardHeart" class="fa-regular fa-heart"></i>
+      <% end %>
+    <% elsif current_user.favorites.find_by(itinerary: itinerary) %>
       <%= link_to favorite_path(current_user.favorites.find_by(itinerary: itinerary)), method: :delete, class: "favorite-link", remote: true do%>
-       <i  data-heart-target="cardHeart" data-action="click->heart#active" class="fa-solid  active fa-heart"></i>
+       <i data-heart-target="cardHeart" data-action="click->heart#active" class="fa-solid  active fa-heart"></i>
       <% end %>
     <% else %>
-      <%= link_to itinerary_favorites_path(itinerary), method: :post, class: "favorite-link", remote: true do%>
-       <i  data-heart-target="cardHeart" data-action="click->heart#active" class="fa-regular fa-heart heart"></i>
+      <%= link_to itinerary_favorites_path(itinerary), method: :post, class: "favorite-link", remote: true do %>
+       <i data-heart-target="cardHeart" data-action="click->heart#active" class="fa-regular fa-heart heart"></i>
       <% end %>
     <% end %>
     </div>
