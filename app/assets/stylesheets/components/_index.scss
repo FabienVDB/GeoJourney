@@ -7,6 +7,7 @@
 @import "card";
 @import "btn";
 @import "favorites";
+@import "heart";
 
 @import "search_bar";
 @import "map";
@@ -19,7 +20,7 @@ $main-color: #15a866;
 body{
 // background-color:#F8F9FA;
 font-family: 'Montserrat', sans-serif;
-background: linear-gradient(#F8F9FA,#e1ffba)
+background: linear-gradient(#F8F9FA,#edffd6,#e1ffba)
 }
 
 h1{

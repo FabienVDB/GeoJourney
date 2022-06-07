@@ -7,7 +7,7 @@ const btnMenu = () => {
 
   if (btnMenuBars) {
     openClose.addEventListener('click', (event) => {
-      console.log('coucou')
+      // console.log('coucou')
       menu.classList.toggle("active");
       openClose.classList.toggle("on");
     })
