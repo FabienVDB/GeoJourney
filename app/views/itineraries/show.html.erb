@@ -9,6 +9,10 @@
           data-mapboxsites-sites="<%= @sites_for_mapbox %>" data-mapdisplay-target="mapcontainer">
         <div data-mapboxsites-target="map" style="height: 100%; width: 100%"></div>
     </div>
+
+    <%= link_to "edit", controller: "itineraries", action: "edit", id: @itinerary, class: "btn btn primary"  %>
+    <%= link_to "delete", @itinerary, method: 'delete', class: "btn btn primary"  %>
+
     <div data-mapdisplay-target="cardscontainer">
         <%= render "shared/card_itinerary_show" %>
         <div class="cards">

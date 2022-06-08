@@ -4,7 +4,7 @@
   <div class="accordion-item">
     <h1 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Create your itinerary :
+        update itinerary :
       </button>
     </h1>
     <%= simple_form_for @itinerary, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
@@ -45,24 +45,7 @@
       </div>
       <hr>
 
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <h3 class="accordion-header" id="headingOne"> Add a site :
-            <div data-nested-form-target="target"></div>
-            <button class="accordion-button" type="button" data-action="nested-form#add" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Add a site
-            </button>
-          </h3>
-        </div>
-      </div>
-
-        <template data-nested-form-target="template">
-          <%= f.simple_fields_for :sites, @site, child_index: "NEW_RECORD" do |site_form| %>
-            <%= render "sites_form", site_form: site_form %>
-          <% end %>
-        </template>
-
-    <%= f.submit "Create your itinerary", class: "btn btn primary" %>
+    <%= f.submit "Update itinerary", class: "btn btn primary" %>
     <% end %>
   </div>
 </div>
