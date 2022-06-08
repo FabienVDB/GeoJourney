@@ -7,6 +7,15 @@
   align-content: center;
 }
 
+.cards-sites {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  margin-top: 25px;
+  row-gap: 25px;
+  align-content: center;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

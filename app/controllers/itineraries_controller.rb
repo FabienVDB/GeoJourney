@@ -122,11 +122,13 @@ class ItinerariesController < ApplicationController
         name: site.name,
         summary: site.summary,
         coords: [site.longitude, site.latitude],
+        duration_in_minutes: site.duration_in_minutes,
         info_window: render_to_string(partial: "shared/info_window_site", locals: { site: site }),
         image_url: site.photo.attached? ? helpers.cl_image_path(site.photo.key, width: 100, height: 100, crop: :fill) : helpers.cl_image_path(Itinerary.first.sites.first.photo.key, width: 100, height: 100, crop: :fill)
       }
     end
     output[:coords] = itinerary.sites.sort_by(&:stage).map { |s| [s.longitude, s.latitude] }
+    output[:durations_in_minutes] = itinerary.sites.sort_by(&:stage).map(&:duration_in_minutes)
     output.to_json
   end
 

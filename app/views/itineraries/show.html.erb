@@ -4,23 +4,73 @@
 <div class="content-wrapper">
   <div data-controller="mapdisplay">
     <a data-action="click->mapdisplay#display" href="/" class="btn-map" data-mapdisplay-target="btn"><i class="fa-solid fa-map"></i> Map</a>
-    <div class= "map-container-show" data-controller="mapboxsites"
+    <div data-controller="mapboxsites"
           data-mapboxsites-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-mapboxsites-sites="<%= @sites_for_mapbox %>" data-mapdisplay-target="mapcontainer">
+          data-mapboxsites-sites="<%= @sites_for_mapbox %>">
+      <div class="map-container-show" data-mapdisplay-target="mapcontainer" data-mapboxsites-target="mapcontainer">
         <div data-mapboxsites-target="map" style="height: 100%; width: 100%"></div>
-    </div>
-
-    <%# <%= link_to "edit", controller: "itineraries", action: "edit", id: @itinerary, class: "btn btn primary"  %>
-    <%# <%= link_to "delete", @itinerary, method: 'delete', class: "btn btn primary"  %>
-
-    <div data-mapdisplay-target="cardscontainer">
+      </div>
+      <div data-mapdisplay-target="cardscontainer" data-mapboxsites-target="cardscontainer">
         <%= render "shared/card_itinerary_show", itinerary: @itinerary %>
-        <div class="cards">
+        <div class="cards-sites">
           <% @itinerary.sites.each do |site|%>
             <%= render "shared/card_site", site: site%>
           <% end %>
         </div>
+      </div>
     </div>
 
+    <%# <%= link_to "edit", controller: "itineraries", action: "edit", id: @itinerary, class: "btn btn primary"  %>
+    <%# <%= link_to "delete", @itinerary, method: 'delete', class: "btn btn primary"  %>
   </div>
 </div>
+
+
+	<div class="timeline-container">
+
+	  <div class="timeline-block timeline-block-left">
+		  <div class="marker marker-left">
+      </div>
+		  <div class="timeline-content">
+        <%= render "shared/card_site", site: @itinerary.sites.first%>
+		  </div>
+	   </div>
+
+	  <div class="timeline-block timeline-block-right">
+		<div class="marker">
+    </div>
+		  <div class="timeline-content">
+			  <p>41 minutes</p>
+		  </div>
+	  </div>
+
+	  <div class="timeline-block timeline-block-left">
+		  <div class="marker marker-left">
+      </div>
+		  <div class="timeline-content">
+			  <h3>Third Year</h3>
+			  <span>Some work experience</span>
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+		  </div>
+	   </div>
+
+	  <div class="timeline-block timeline-block-right">
+		  <div class="marker">
+      </div>
+		  <div class="timeline-content">
+			  <h3>Fourth Year</h3>
+			  <span>Some work experience</span>
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+		  </div>
+	   </div>
+
+	  <div class="timeline-block timeline-block-left">
+		<div class="marker marker-left">
+      </div>
+		  <div class="timeline-content">
+			  <h3>Fifth Year</h3>
+			  <span>Some work experience</span>
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+		  </div>
+	   </div>
+	</div>
