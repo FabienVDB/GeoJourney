@@ -1,6 +1,16 @@
-function displayCard(itineraryId, html){
+function displayCard(itineraryId){
   const card = document.querySelector(`#itinerary-${itineraryId}`);
-  card.outerHTML = html;
+  if (card){
+    const html = '<%= j render "shared/card_itinerary_index", itinerary: @itinerary  %>'
+    card.outerHTML = html;
+  }
+  else {
+    const cardShow = document.querySelector('#card-show');
+    const html = '<%= j render "shared/card_itinerary_show", itinerary: @itinerary %> '
+    cardShow.innerHTML = html;
+  }
+
+
 
 }
-displayCard(<%= @itinerary.id %>, '<%= j render "shared/card_itinerary_index", itinerary: @itinerary  %>')
+displayCard(<%= @itinerary.id %>)
