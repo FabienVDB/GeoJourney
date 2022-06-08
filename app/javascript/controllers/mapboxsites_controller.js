@@ -35,9 +35,11 @@ export default class extends Controller {
     console.log(this.cardscontainerTarget.querySelector(".card-show"))
     this.cardscontainerTarget.querySelectorAll(".card-site-parent").forEach((card, index) => {
       console.log(card)
-      const travelTimeHTML = this.#convertMinutes(this.itineraryMatrix.travelTimesInMinutes[index])
+      const travelTimeInHoursStr = this.#convertMinutes(this.itineraryMatrix.travelTimesInMinutes[index])
+      const name = card.querySelector("h2").innerHTML
+      const travelTimeHTML = travelTimeInHoursStr  === '' ? '' : `<p><i class="fa-regular fa-clock"></i> Travel: ${travelTimeInHoursStr} to ${name}</p>`
       console.log(travelTimeHTML)
-      card.insertAdjacentHTML('beforeend', travelTimeHTML)
+      card.insertAdjacentHTML('afterbegin', travelTimeHTML)
     })
 
   }
@@ -52,10 +54,10 @@ export default class extends Controller {
         hours_str = '';
         break;
       case 1:
-        hours_str = `${hours} hour`;
+        hours_str = `${hours} hour `;
         break;
       default:
-        hours_str = `${hours} hours`;
+        hours_str = `${hours} hours `;
     }
     switch (minutes) {
       case 0:
@@ -67,7 +69,7 @@ export default class extends Controller {
       default:
         minutes_str = `${minutes} minutes`;
     }
-    return `Travel time: ${hours_str} ${minutes_str}`
+    return `${hours_str}${minutes_str}`
   }
 
   #zoomOnselected(){
@@ -209,7 +211,7 @@ export default class extends Controller {
     const mapboxMatrixUrl = this.#buildMatrixURL(itinerary)
     const response = await fetch(mapboxMatrixUrl);
     const data = await response.json();
-    const durations = [];
+    const durations = [0];
     // console.log(data.durations.length)
     data.durations.forEach((row, index) => {
       if (index < data.durations.length - 1) {
