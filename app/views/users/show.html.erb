@@ -10,8 +10,10 @@
   </a>
   <div class= "d-none" data-carddisplay-target="cardcontainer">
     <div class="cards">
+
       <% @favorites.each do |favorite| %>
         <%= render 'shared/card_itinerary_index', itinerary: favorite.itinerary %>
+        <h1>Edit sites : </h1>
       <% end %>
     </div>
   </div>

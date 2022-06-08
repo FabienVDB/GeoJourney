@@ -18,4 +18,19 @@ class FavoritesController < ApplicationController
       format.html { redirect_to itineraries_path }
     end
   end
+
+  def edit
+    @favorite = Favorite.find(params[:id])
+    @itinerary = @favorite.itinerary
+  end
+
+  def update
+    @favorite = Favorite.find(params[:id])
+    @itinerary = @favorite.itinerary
+    @favorite.update(favorite_params)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to itineraries_path }
+    end
+  end
 end

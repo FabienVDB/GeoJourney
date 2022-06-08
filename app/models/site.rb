@@ -3,8 +3,8 @@ class Site < ApplicationRecord
   has_one_attached :photo
 
   # !! Uncomment the 2 lines below after seed !!
-  #validates :name, presence: true, uniqueness: true
-  #validates :summary, presence: true
+  # validates :name, presence: true, uniqueness: true
+  # validates :summary, presence: true
 
   # validates :content, presence: true
   validates :stage, presence: true, numericality: { only_integer: true, greater_than: 0 }
