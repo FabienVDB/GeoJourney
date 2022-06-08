@@ -1,20 +1,36 @@
 <%= render 'shared/navbar' %>
 <%= render "shared/burger_menu" %>
-<div data-controller="carddisplay">
-  <a data-action="click->carddisplay#display" data-carddisplay-target="bouton" data-state="closed" href="#" class="favorite">
-    <h2>
-      My Favorite<%= @favorites.length > 1 ? "s" : ""%>
-      <i class="fa-solid fa-arrow-down"></i>
-      <i class='fa-solid fa-arrow-up d-none'></i>
-    </h2>
-  </a>
-  <div class= "d-none" data-carddisplay-target="cardcontainer">
-    <div class="cards">
-
-      <% @favorites.each do |favorite| %>
-        <%= render 'shared/card_itinerary_index', itinerary: favorite.itinerary %>
-        <h1>Edit sites : </h1>
-      <% end %>
+<div class="profile">
+  <div data-controller="carddisplay">
+    <a data-action="click->carddisplay#display" data-carddisplay-target="bouton" data-state="closed" href="#" class="favorite">
+      <h2>
+        My Favorite<%= @favorites.length > 1 ? "s" : ""%>
+        <i class='fa-solid fa-arrow-up '></i>
+        <i class="fa-solid fa-arrow-down d-none"></i>
+      </h2>
+    </a>
+    <div data-carddisplay-target="cardcontainer">
+      <div class="cards">
+        <% @favorites.each do |favorite| %>
+          <%= render 'shared/card_itinerary_index', itinerary: favorite.itinerary %>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <div data-controller="itinerary">
+      <a data-action="click->itinerary#display" data-itinerary-target="bouton" data-state="closed" href="#" class="itinerary">
+        <h2>
+          My Itinerary
+          <i class="fa-solid fa-arrow-down"></i>
+          <i class='fa-solid fa-arrow-up d-none'></i>
+        </h2>
+      </a>
+      <div class= "d-none" data-itinerary-target="cardcontainer">
+        <div class="cards">
+          <% @current_user.itineraries.each do |itinerary| %>
+            <%= render 'shared/card_itinerary_index', itinerary: itinerary %>
+          <% end %>
+        </div>
+      </div>
   </div>
 </div>

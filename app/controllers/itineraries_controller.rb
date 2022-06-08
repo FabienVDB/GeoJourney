@@ -34,6 +34,16 @@ class ItinerariesController < ApplicationController
     @sites_for_mapbox = sites_to_json(@itinerary)
   end
 
+  def edit
+    @itinerary = Itinerary.find(params[:id])
+  end
+
+  def update
+    @itinerary = Itinerary.find(params[:id])
+    @itinerary.update(itinerary_params)
+    redirect_to itinerary_path(@itinerary)
+  end
+
   private
 
   def itinerary_params

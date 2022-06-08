@@ -9,6 +9,8 @@
 @import "favorites";
 @import "heart";
 @import "display";
+@import "burger_menu";
+@import "user_show";
 
 @import "search_bar";
 @import "map";
@@ -18,24 +20,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 
-body{
-
-font-family: 'Montserrat', sans-serif;
-
-background: #F7FAF4;
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #F7FAF4;
 }
 
-h1{
+h1 {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
   color: $main-color;
   text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
   font-family: 'Montserrat', sans-serif;
-  margin-top: 20px;
-}
-h2{
-  color: $main-color;
-  text-shadow:  1px 3px rgba(230, 228, 228, 0.2);
-  font-family: 'Montserrat', sans-serif;
-  margin-top: 20px;
+  margin-top: 40px;
+  padding-left: 15px;
+
 }
 
 a {
