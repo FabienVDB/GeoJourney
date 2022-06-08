@@ -241,10 +241,10 @@ color: $main-color;
 
 .duration-minutes p{
   padding-left: 10px;
-
 }
 .duration-minutes{
   display: flex;
+  align-items: baseline;
 }
 
 .duration-days{

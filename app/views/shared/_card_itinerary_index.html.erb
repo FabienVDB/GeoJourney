@@ -2,7 +2,6 @@
 <% img_url = itinerary.photo.attached? ? cl_image_path(itinerary.photo.key, width: 200, crop: :fill) : default_img_url %>
 <div class ="card-itinerary-parent" id="itinerary-<%= itinerary.id%>">
   <div class="card-itinerary-child" style="background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('<%= img_url %>')">
-    <%# !! Change link below to favorites path !! %>
     <div data-controller="heart">
     <% if !user_signed_in? %>
       <%= link_to new_user_session_path, class: "favorite-link" do %>
