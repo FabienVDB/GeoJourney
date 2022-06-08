@@ -74,9 +74,11 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    this.itinerary.sites.forEach((sites) => {
+    this.itinerary.sites.forEach((site) => {
+      const popup = new mapboxgl.Popup().setHTML(site.info_window)
       new mapboxgl.Marker()
-        .setLngLat(sites.coords)
+        .setLngLat(site.coords)
+        .setPopup(popup)
         .addTo(this.map)
     });
   }

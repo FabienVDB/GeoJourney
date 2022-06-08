@@ -104,7 +104,7 @@ class ItinerariesController < ApplicationController
         name: site.name,
         summary: site.summary,
         coords: [site.longitude, site.latitude],
-        info_window: render_to_string(partial: "shared/info_window_itinerary", locals: { itinerary: itinerary }),
+        info_window: render_to_string(partial: "shared/info_window_site", locals: { site: site }),
         image_url: site.photo.attached? ? helpers.cl_image_path(site.photo.key) : helpers.cl_image_path(Itinerary.first.sites.first.photo.key)
       }
     end
