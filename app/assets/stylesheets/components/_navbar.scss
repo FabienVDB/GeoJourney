@@ -28,3 +28,20 @@ margin-right: 3%;
   background-color:$search-bar-color;
 
 }
+
+.geojourney-icon {
+  position: absolute;
+  left: 40px;
+  top: 0px;
+  height: 70px;
+  width: 100px;
+  border-radius: 20px;
+}
+
+@media (max-width: 576px) {
+  .geojourney-icon {
+    left: 20px;
+    height: 35px;
+    width: 50px;
+  }
+}

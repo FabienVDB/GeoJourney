@@ -11,6 +11,7 @@ export default class extends Controller {
 
   initialize() {
     this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving";
+    this.matrixBaseUrl = "https://api.mapbox.com/directions-matrix/v1/mapbox/driving";
   }
 
   async connect() {
@@ -18,6 +19,8 @@ export default class extends Controller {
     this.itinerary = JSON.parse(this.data.get("sites"))
     console.log(this.itinerary)
     this.itineraryRoute = await this.#fetchItineraryRoute(this.itinerary)
+    this.itineraryMatrix = await this.#fetchItineraryMatrix(this.itinerary)
+    console.log(this.itineraryMatrix)
     this.#addSitesSource()
     this.#addSitesLayer()
     this.#displayRoute(this.itineraryRoute)
@@ -25,12 +28,14 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.element.classList.add("d-none")
     // this.#zoomOnselected()
+
+    console.log(this.#buildMatrixURL(this.itinerary))
   }
 
   #zoomOnselected(){
     this.map.on('click', async (e) => {
       const selectedFeatures = this.map.queryRenderedFeatures(e.point, {layers: ['circle']});
-      console.log(selectedFeatures)
+      // console.log(selectedFeatures)
       this.map.flyTo({center: selectedFeatures[0], zoom:15, pitch:45});
     })
 
@@ -74,9 +79,17 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    this.itinerary.sites.forEach((sites) => {
-      new mapboxgl.Marker()
-        .setLngLat(sites.coords)
+    this.itinerary.sites.forEach((site) => {
+      const popup = new mapboxgl.Popup().setHTML(site.info_window)
+
+      const customMarker = document.createElement("div")
+      customMarker.className = "custom-marker"
+      customMarker.style.backgroundImage = `url('${site.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+
+      new mapboxgl.Marker(customMarker)
+        .setLngLat(site.coords)
+        .setPopup(popup)
         .addTo(this.map)
     });
   }
@@ -153,6 +166,32 @@ export default class extends Controller {
         'circle-stroke-color': '#ffffff'
       }
     });
+  }
+
+  async #fetchItineraryMatrix(itinerary) {
+    const mapboxMatrixUrl = this.#buildMatrixURL(itinerary)
+    const response = await fetch(mapboxMatrixUrl);
+    const data = await response.json();
+    const durations = [0];
+    // console.log(data.durations.length)
+    data.durations.forEach((row, index) => {
+      if (index < data.durations.length - 1) {
+        // console.log(index, row[index + 1]);
+        durations.push(Math.round(row[index + 1] / 60))
+      }
+    })
+    // console.log(durations)
+    // return data;
+    return { id: itinerary.id,
+             name: itinerary.name,
+             travel_times_in_minutes: durations,
+             total_duration: data.durations[0][data.durations.length - 1]
+    };
+  }
+
+  #buildMatrixURL(itinerary) {
+    const coordsString = itinerary.coords.join(';')
+    return `${this.matrixBaseUrl}/${coordsString}?&access_token=${this.apiKeyValue}`
   }
 
 }
