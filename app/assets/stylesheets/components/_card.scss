@@ -1,10 +1,11 @@
 .card-itinerary-parent {
 	display: flex;
   flex-direction: column;
-  height: 220px;
+  // height: 220px;
   width: 300px;
   align-self: center;
   justify-self: center;
+  align-self: start;
   // margin-top: 50px;
   //box-shadow: 1px 5px 11px -1px rgba(0,0,0,0.4);
   //border-radius: 20px;
@@ -23,7 +24,7 @@
   background-clip: border-box;
   margin-left: 35px;
   margin-right: 35px;
-  margin-top: -10%;
+  margin-top: -4%;
 
 }
 
