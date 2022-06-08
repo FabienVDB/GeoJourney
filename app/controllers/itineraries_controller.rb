@@ -14,6 +14,10 @@ class ItinerariesController < ApplicationController
     @itineraries_for_mapbox = itineraries_to_json(@itineraries)
   end
 
+  def edit
+    @itinerary = Itinerary.find(params[:id])
+  end
+
   def new
     @itinerary = Itinerary.new
     @site = Site.new
@@ -32,6 +36,18 @@ class ItinerariesController < ApplicationController
   def show
     @itinerary = Itinerary.find(params[:id])
     @sites_for_mapbox = sites_to_json(@itinerary)
+  end
+
+  def update
+    @itinerary = Itinerary.find(params[:id])
+    @itinerary.update(itinerary_params)
+    redirect_to itinerary_path(@itinerary)
+  end
+
+  def destroy
+    @itinerary = Itinerary.find(params[:id])
+    @itinerary.destroy
+    redirect_to itineraries_path(@itinerary)
   end
 
   private
