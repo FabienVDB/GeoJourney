@@ -1,0 +1,30 @@
+<% hours = site.duration_in_minutes / 60 %>
+<% minutes = site.duration_in_minutes % 60 %>
+<% if hours > 1 %>
+  <% hours_str = "#{hours} hours"  %>
+<% elsif hours == 1 %>
+  <% hours_str = "#{hours} hour"  %>
+<% else %>
+  <% hours_str = ""  %>
+<% end %>
+<% if minutes > 1 %>
+  <% minutes_str = "#{minutes} minutes"  %>
+<% elsif minutes == 1 %>
+  <% minutes_str = "#{minutes} minute"  %>
+<% else %>
+  <% minutes_str = ""  %>
+<% end %>
+
+<% duration_str = "#{hours_str}  #{minutes_str}" %>
+
+<div class="map-popup">
+  <h2><%= site.name %></h2>
+  <p><%= site.summary%></p>
+  <div class="map-popup-footer">
+    <div class="duration-minutes">
+      <i class="fa-regular fa-clock"></i><p><%=duration_str%>
+    </div>
+    <%= link_to "More info", itinerary_path(site.itinerary, anchor: "site#{site.id}"), class: "btn-info-window" %>
+  </div>
+
+</div>
