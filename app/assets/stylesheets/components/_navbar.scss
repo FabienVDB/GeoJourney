@@ -25,3 +25,11 @@ margin-right: 3%;
   width: 100px;
   border-radius: 20px;
 }
+
+@media (max-width: 576px) {
+  .geojourney-icon {
+    left: 20px;
+    height: 35px;
+    width: 50px;
+  }
+}

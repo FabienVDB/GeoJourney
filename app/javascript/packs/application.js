@@ -24,5 +24,5 @@ import { btnMenu } from '../component/btn-menu';
 document.addEventListener('turbolinks:load', () => {
   noCloseDropdown();
   btnMenu();
-  heart();
+  // heart();
 })

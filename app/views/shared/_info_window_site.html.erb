@@ -24,6 +24,7 @@
     <div class="duration-minutes">
       <i class="fa-regular fa-clock"></i><p><%=duration_str%>
     </div>
+    <%= link_to "More info", itinerary_path(site.itinerary, anchor: "site#{site.id}"), class: "btn-info-window" %>
   </div>
 
 </div>
