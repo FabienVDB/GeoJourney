@@ -1,7 +1,6 @@
     <% if user_signed_in? %>
       <div class="text-menu">
         <ul class="menu">
-      <div class="flex-grow-1"></div>
           <li><%= link_to "My profile", user_path(current_user),class:"menuLink active"%></li>
           <li><%= link_to "Create an itinerary", new_itinerary_path,class:"menuLink active"%></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"menuLink active"%></li>
