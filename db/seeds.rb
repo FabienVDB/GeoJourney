@@ -526,21 +526,21 @@ file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654356663/G
 monument_aux_girondins.photo.attach(io: file, filename: 'MonumentAuxGirondins.jpg', content_type: 'image/jpg')
 puts "  Monument aux Girondins site complete"
 
-puts "  Create Le Wagon site !Real!"
-le_wagon = Site.create!(itinerary: bordeaux,
-                        stage: 3,
-                        name: "Le Wagon",
-                        summary: "Seafish for dinner at Le Wagon Bordeaux !",
-                        location: "107 Cr Balguerie Stuttenberg, 33300 Bordeaux, France",
-                        latitude: 44.86013811803033,
-                        longitude: -0.5636628867626898,
-                        duration_in_minutes: 10,
-                        content: "The Le Wagon building is made up of a yellowish limestone of Eocene age (32 millions \
-years ago). It contains large pieces of starfish fossils, as well as oysters and coral remnants. Cross-bedding \
-indicates that strong tidal currrents prevailed in this former coastal environment.")
-file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654357373/GeoJourney/BordeauxUrbanGeology/LeWagon/LeWagonBordeauxInside_iadszq.jpg')
-le_wagon.photo.attach(io: file, filename: 'Le Wagon.jpg', content_type: 'image/jpg')
-puts "  Le Wagon site complete"
+# puts "  Create Le Wagon site !Real!"
+# le_wagon = Site.create!(itinerary: bordeaux,
+#                         stage: 3,
+#                         name: "Le Wagon",
+#                         summary: "Seafish for dinner at Le Wagon Bordeaux !",
+#                         location: "107 Cr Balguerie Stuttenberg, 33300 Bordeaux, France",
+#                         latitude: 44.86013811803033,
+#                         longitude: -0.5636628867626898,
+#                         duration_in_minutes: 10,
+#                         content: "The Le Wagon building is made up of a yellowish limestone of Eocene age (32 millions \
+# years ago). It contains large pieces of starfish fossils, as well as oysters and coral remnants. Cross-bedding \
+# indicates that strong tidal currrents prevailed in this former coastal environment.")
+# file = URI.open('https://res.cloudinary.com/dxlbokhad/image/upload/v1654357373/GeoJourney/BordeauxUrbanGeology/LeWagon/LeWagonBordeauxInside_iadszq.jpg')
+# le_wagon.photo.attach(io: file, filename: 'Le Wagon.jpg', content_type: 'image/jpg')
+# puts "  Le Wagon site complete"
 
 puts "Bordeaux urban itinerary complete"
 
