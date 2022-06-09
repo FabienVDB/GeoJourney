@@ -127,6 +127,14 @@
 	opacity: 0;
 }
 
+.backround-show{
+  background-color: #e5ebe2;
+  border-top-left-radius: 60px 60px;
+  border-top-right-radius: 60px 60px;
+  border-bottom-left-radius: 60px 60px;
+  border-bottom-right-radius: 60px 60px;
+}
+
 
 
 .summary {
@@ -202,6 +210,7 @@ color: $main-color;
   text-decoration: none;
   color: $main-color;
   position: relative;
+  font-weight: bold;
   // padding-left: 12%;
 
 }
@@ -224,20 +233,21 @@ color: $main-color;
 }
 
 .card-site img {
-  height: 90%;
+  height: 100%;
   width: 150px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-left: 5%;
+  border-radius: 10px 0 0 10px;
   margin-top: 5%;
   margin-bottom: 5%;
+
 
 }
 
 .card-site h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin: 2px;
+  padding-left: 3px;
 }
 
 .card-site p {
@@ -245,13 +255,14 @@ color: $main-color;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 11px;
+  padding-left: 8px;
 }
 
 .card-site .card-site-infos {
-  padding: 16px;
-  padding-left: 2%;
-
+  padding: 11px;
+  padding-left: 0%;
+  text-align: start;
 }
 
 .info-site{
@@ -276,6 +287,7 @@ color: $main-color;
 .duration-minutes{
   display: flex;
   align-items: baseline;
+  padding-left: 20px;
 }
 
 .duration-days{

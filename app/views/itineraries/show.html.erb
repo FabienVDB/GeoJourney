@@ -12,10 +12,12 @@
       </div>
       <div data-mapdisplay-target="cardscontainer" data-mapboxsites-target="cardscontainer">
         <%= render "shared/card_itinerary_show", itinerary: @itinerary %>
-        <div class="cards-sites">
-          <% @itinerary.sites.each do |site|%>
-            <%= render "shared/card_site", site: site%>
-          <% end %>
+         <div class="cards-sites">
+          <div class="backround-show">
+            <% @itinerary.sites.each do |site|%>
+              <%= render "shared/card_site", site: site%>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
