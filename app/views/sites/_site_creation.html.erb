@@ -9,7 +9,7 @@
                     geocoder_api_key_value: ENV['MAPBOX_API_KEY'] },
                     } %>
   <%= f.input :duration_in_minutes, collection: 10..200, include_blank: false %>
-  <% if controller.action_name == “new”%>
+  <% if controller.action_name == "new" %>
     <%= f.submit "Create a site", class: "btn-new-site"%>
   <% else %>
     <%= f.submit "Update site", class: "btn-new-site" %>
