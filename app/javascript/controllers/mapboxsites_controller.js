@@ -37,7 +37,8 @@ export default class extends Controller {
       console.log(card)
       const travelTimeInHoursStr = this.#convertMinutes(this.itineraryMatrix.travelTimesInMinutes[index])
       const name = card.querySelector("h2").innerHTML
-      const travelTimeHTML = travelTimeInHoursStr  === '' ? '' : `<p><i class="fa-regular fa-clock"></i> Travel: ${travelTimeInHoursStr} to ${name}</p>`
+      const travelTimeHTML = travelTimeInHoursStr  === '' ? '' : `<div class="timeline"><i class="fa-solid fa-car"></i>
+      <div class="travel-time">${travelTimeInHoursStr} to ${name}</div></div>`
       console.log(travelTimeHTML)
       card.insertAdjacentHTML('afterbegin', travelTimeHTML)
     })

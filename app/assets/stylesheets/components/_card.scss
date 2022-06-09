@@ -27,6 +27,35 @@
   margin-top: -4%;
   // width: 300px;
 
+  .timeline {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .fa-car {
+    color: $main-color;
+    border-left: 1px dashed black;
+    border-right: 1px dashed black;
+    padding: 10px 5px;
+    // align-self: center;
+
+    // margin-left: 14px;
+
+    // position: relative;
+    // transform: translateY(150%);
+    // left: 5px;
+    // z-index: 20;
+  }
+
+  .travel-time {
+    // align-self: center;
+    padding-left: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+    // margin-left: 14px;
+  }
+
 }
 
 
