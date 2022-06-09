@@ -4,6 +4,8 @@
     <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-filter filter-icon"></i>
     </a>
+    <%# <input type="submit" name="geolocation" value="Search" class="search_bar_button" data-disable-with="Search"> %>
+    <%# <a href="" data-controller="geolocation" data-action="click->geolocation#filterByCurrentPosition"><i class="fa-solid fa-location-crosshairs"></i> Around me</a> %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <%= simple_form_for :search, url: root_path, method: :get, html: { class: "d-flex flex-column d-sm-flex flex-sm-row"}  do |f| %>

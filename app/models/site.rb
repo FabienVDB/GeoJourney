@@ -2,7 +2,10 @@ class Site < ApplicationRecord
   belongs_to :itinerary
   has_one_attached :photo
 
-  geocoded_by :latitude, :longitude
+  geocoded_by :location
+
+  # reverse_geocoded_by :latitude, :longitude
+  # after_validation :reverse_geocode
 
   # !! Uncomment the 2 lines below after seed !!
   # validates :name, presence: true, uniqueness: true

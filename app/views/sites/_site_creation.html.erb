@@ -4,9 +4,9 @@
   <%= f.input :content %>
   <%= f.input :photo, as: :file %>
   <%= f.input :stage, collection: 1..6, include_blank: false %>
-  <%= f.input :location, input_html: { data: { geocoder_target: “location” }, class: “d-none” },
-                    wrapper_html: { data: { controller: “geocoder”,
-                    geocoder_api_key_value: ENV[‘MAPBOX_API_KEY’] },
+  <%= f.input :location, input_html: { data: { geocoder_target: 'location' }, class: 'd-none' },
+                    wrapper_html: { data: { controller: 'geocoder',
+                    geocoder_api_key_value: ENV['MAPBOX_API_KEY'] },
                     } %>
   <%= f.input :duration_in_minutes, collection: 10..200, include_blank: false %>
   <% if controller.action_name == “new”%>
