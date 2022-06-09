@@ -13,6 +13,7 @@ export default class extends Controller {
       this.#toggleScroll()
       this.mapcontainerTarget.classList.toggle("d-none")
       this.cardscontainerTarget.classList.toggle("d-none")
+      this.cardscontainerTarget.classList.toggle("cards")
     }
 
   #toggleScroll() {

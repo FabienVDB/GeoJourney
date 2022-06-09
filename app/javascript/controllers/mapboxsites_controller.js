@@ -7,7 +7,7 @@ export default class extends Controller {
     markers: Array,
   }
 
-  static targets = ['map']
+  static targets = ['map', 'mapcontainer', 'cardscontainer']
 
   initialize() {
     this.baseUrl = "https://api.mapbox.com/directions/v5/mapbox/driving";
@@ -26,10 +26,51 @@ export default class extends Controller {
     this.#displayRoute(this.itineraryRoute)
     this.#fitMapToItinerary(this.itineraryRoute)
     this.#addMarkersToMap()
-    this.element.classList.add("d-none")
+    // this.element.classList.add("d-none")
+    this.mapcontainerTarget.classList.add("d-none")
     // this.#zoomOnselected()
 
-    console.log(this.#buildMatrixURL(this.itinerary))
+
+    console.log(this.cardscontainerTarget)
+    console.log(this.cardscontainerTarget.querySelector(".card-show"))
+    this.cardscontainerTarget.querySelectorAll(".card-site-parent").forEach((card, index) => {
+      console.log(card)
+      const travelTimeInHoursStr = this.#convertMinutes(this.itineraryMatrix.travelTimesInMinutes[index])
+      const name = card.querySelector("h2").innerHTML
+      const travelTimeHTML = travelTimeInHoursStr  === '' ? '' : `<div class="timeline"><i class="fa-solid fa-car"></i>
+      <div class="travel-time">${travelTimeInHoursStr} to ${name}</div></div>`
+      console.log(travelTimeHTML)
+      card.insertAdjacentHTML('afterbegin', travelTimeHTML)
+    })
+
+  }
+
+  #convertMinutes(duration_in_minutes) {
+    const hours = Math.floor(duration_in_minutes / 60)
+    const minutes = duration_in_minutes % 60
+    let hours_str = ''
+    let minutes_str = ''
+    switch (hours) {
+      case 0:
+        hours_str = '';
+        break;
+      case 1:
+        hours_str = `${hours} hour `;
+        break;
+      default:
+        hours_str = `${hours} hours `;
+    }
+    switch (minutes) {
+      case 0:
+        minutes_str = '';
+        break;
+      case 1:
+        minutes_str = `${minutes} minute`;
+        break;
+      default:
+        minutes_str = `${minutes} minutes`;
+    }
+    return `${hours_str}${minutes_str}`
   }
 
   #zoomOnselected(){
@@ -52,7 +93,6 @@ export default class extends Controller {
       container: this.mapTarget,
       style: "mapbox://styles/fabienvdb/cl42opbkr004114p7gs9ojuyn"
     })
-
   }
 
   async #fetchItineraryRoute(itinerary) {
@@ -184,14 +224,18 @@ export default class extends Controller {
     // return data;
     return { id: itinerary.id,
              name: itinerary.name,
-             travel_times_in_minutes: durations,
-             total_duration: data.durations[0][data.durations.length - 1]
+             travelTimesInMinutes: durations,
+             totalDurationInMinutes: this.#calculateTotalDurationInMinutes(Math.round(data.durations[0][data.durations.length - 1] /60))
     };
   }
 
   #buildMatrixURL(itinerary) {
     const coordsString = itinerary.coords.join(';')
     return `${this.matrixBaseUrl}/${coordsString}?&access_token=${this.apiKeyValue}`
+  }
+
+  #calculateTotalDurationInMinutes(totalTravelTimeInMinutes) {
+    return this.itinerary.durations_in_minutes.reduce((partialSum, a) => partialSum + a, 0) + totalTravelTimeInMinutes
   }
 
 }

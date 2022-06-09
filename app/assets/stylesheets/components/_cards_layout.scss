@@ -7,6 +7,24 @@
   align-content: center;
 }
 
+.cards-sites {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  margin-top: 25px;
+  row-gap: 25px;
+  justify-content: center;
+  align-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+  .cards-sites {
+    max-width: 400px;
+  }
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

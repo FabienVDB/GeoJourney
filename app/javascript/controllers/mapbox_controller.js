@@ -23,8 +23,6 @@ export default class extends Controller {
     this.#fitMapToItineraries(this.itineraries)
     this.#addFirstSiteMarkersToMap(this.itineraries)
 
-    console.log(this.map)
-
     this.element.classList.add("d-none")
   }
 

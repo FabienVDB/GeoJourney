@@ -4,25 +4,25 @@
 <div class="content-wrapper">
   <div data-controller="mapdisplay">
     <a data-action="click->mapdisplay#display" href="/" class="btn-map" data-mapdisplay-target="btn"><i class="fa-solid fa-map"></i> Map</a>
-    <div class= "map-container-show" data-controller="mapboxsites"
+    <div data-controller="mapboxsites"
           data-mapboxsites-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-mapboxsites-sites="<%= @sites_for_mapbox %>" data-mapdisplay-target="mapcontainer">
+          data-mapboxsites-sites="<%= @sites_for_mapbox %>">
+      <div class="map-container-show" data-mapdisplay-target="mapcontainer" data-mapboxsites-target="mapcontainer">
         <div data-mapboxsites-target="map" style="height: 100%; width: 100%"></div>
-    </div>
-
-    <%# <%= link_to "edit", controller: "itineraries", action: "edit", id: @itinerary, class: "btn btn primary"  %>
-    <%# <%= link_to "delete", @itinerary, method: 'delete', class: "btn btn primary"  %>
-
-    <div data-mapdisplay-target="cardscontainer">
+      </div>
+      <div data-mapdisplay-target="cardscontainer" data-mapboxsites-target="cardscontainer">
         <%= render "shared/card_itinerary_show", itinerary: @itinerary %>
-        <div class="cards">
+         <div class="cards-sites">
           <div class="backround-show">
             <% @itinerary.sites.each do |site|%>
               <%= render "shared/card_site", site: site%>
             <% end %>
           </div>
         </div>
+      </div>
     </div>
 
+    <%# <%= link_to "edit", controller: "itineraries", action: "edit", id: @itinerary, class: "btn btn primary"  %>
+    <%# <%= link_to "delete", @itinerary, method: 'delete', class: "btn btn primary"  %>
   </div>
 </div>
