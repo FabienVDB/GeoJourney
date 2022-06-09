@@ -92,3 +92,10 @@
   color: rgb(35, 35, 35);
   opacity: 0.8;
 }
+
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}

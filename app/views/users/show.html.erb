@@ -29,6 +29,15 @@
         <div class="cards">
           <% @current_user.itineraries.each do |itinerary| %>
             <%= render 'shared/card_itinerary_index', itinerary: itinerary %>
+            <div class="icones">
+              <%= link_to itinerary_path(itinerary), method: :delete, data: { confirm: "Are you sure ? " } do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+              <%= link_to edit_itinerary_path(itinerary) do %>
+               <i class="fa-solid fa-edit"></i>
+              <% end %>
+                <i class="fa-solid fa-plus"></i>
+            </div>
           <% end %>
         </div>
       </div>

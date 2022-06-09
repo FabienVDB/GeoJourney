@@ -1,1 +1,8 @@
-<% raise  %>
+<div class=“container”>
+  <div class=“row”>
+    <div class=“col-md-12”>
+      <h1 id=“site-title”>Update your site</h1>
+      <p> Hi 👋🏻 here you can update a site to <%= @itinerary.name %></p>
+      <hr>
+      <%= render “site_creation”, locals: {itinerary: @itinerary, site: @site} %>
+</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #get 'favorites/uptade'
-  get 'itineraries/:id/edit', to: 'itineraries#edit', as: 'edit_itinerary'
+  # get 'itineraries/:id/edit', to: 'itineraries#edit', as: 'edit_itinerary'
   devise_for :users
   root to: 'itineraries#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
