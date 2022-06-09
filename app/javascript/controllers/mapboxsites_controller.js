@@ -24,6 +24,7 @@ export default class extends Controller {
     this.#addSitesSource()
     this.#addSitesLayer()
     this.#displayRoute(this.itineraryRoute)
+    this.map.resize()
     this.#fitMapToItinerary(this.itineraryRoute)
     this.#addMarkersToMap()
     // this.element.classList.add("d-none")
