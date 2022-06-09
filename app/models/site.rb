@@ -2,6 +2,8 @@ class Site < ApplicationRecord
   belongs_to :itinerary
   has_one_attached :photo
 
+  geocoded_by :latitude, :longitude
+
   # !! Uncomment the 2 lines below after seed !!
   # validates :name, presence: true, uniqueness: true
   # validates :summary, presence: true
