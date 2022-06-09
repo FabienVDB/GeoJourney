@@ -24,7 +24,7 @@ h2 {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 20px;
+  margin-top: -10px;
   color: $main-color;
   font-size: 24px;
 
@@ -36,4 +36,8 @@ h2 {
 
 .fa-edit{
   color:$main-color;
+}
+
+.fa-plus{
+  color: $main-color;
 }

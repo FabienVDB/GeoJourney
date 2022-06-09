@@ -2,7 +2,8 @@ class Site < ApplicationRecord
   belongs_to :itinerary
   has_one_attached :photo
 
-  geocoded_by :latitude, :longitude
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   # !! Uncomment the 2 lines below after seed !!
   # validates :name, presence: true, uniqueness: true
