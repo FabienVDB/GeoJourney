@@ -18,3 +18,22 @@ h2 {
   padding-left: 15px;
 
 }
+
+.icones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  color: $main-color;
+  font-size: 24px;
+
+}
+
+.fa-trash-can{
+  color: #201e1ed6;;
+}
+
+.fa-edit{
+  color:$main-color;
+}

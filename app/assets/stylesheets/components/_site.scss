@@ -1,0 +1,15 @@
+#site-title {
+  color: $main-color;
+  margin-bottom: 20px;
+}
+.btn-new-site {
+  color: white;
+  border: 1px solid #FFFFFF;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  background-color: $search-bar-color;
+  text-decoration: none;
+  margin-left: 100px;
+}
