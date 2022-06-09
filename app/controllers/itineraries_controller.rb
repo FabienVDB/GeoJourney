@@ -8,7 +8,7 @@ class ItinerariesController < ApplicationController
     if params[:search].present?
       @itineraries = filter_itineraries
     else
-      @itineraries = Itinerary.all
+      @itineraries = Itinerary.all.sort_by(&:id)
     end
 
     @itineraries_for_mapbox = itineraries_to_json(@itineraries)
@@ -116,7 +116,7 @@ class ItinerariesController < ApplicationController
     output = {}
     output[:id] =  itinerary.id,
     output[:name] = itinerary.name,
-    output[:sites] = itinerary.sites.map do |site|
+    output[:sites] = itinerary.sites.sort_by(&:stage).map do |site|
       {
         id: site.id,
         name: site.name,

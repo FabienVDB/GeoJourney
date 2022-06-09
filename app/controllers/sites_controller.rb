@@ -36,6 +36,6 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:name, :summary, :content, :duration_in_minutes, :stage, :location, :latitude, :longitude)
+    params.require(:site).permit(:name, :summary, :content, :duration_in_minutes, :stage, :location, :latitude, :longitude, :photo)
   end
 end
