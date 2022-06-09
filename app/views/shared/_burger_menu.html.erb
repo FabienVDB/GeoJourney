@@ -1,9 +1,11 @@
     <% if user_signed_in? %>
       <div class="text-menu">
         <ul class="menu">
-          <li><%= link_to "My profile", user_path(current_user),class:"menuLink active"%></li>
-          <li><%= link_to "Create an itinerary", new_itinerary_path,class:"menuLink active"%></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"menuLink active"%></li>
+          <div class="link_burger">
+            <li><%= link_to "My profile", user_path(current_user),class:"menuLink active"%></li>
+            <li><%= link_to "Create an itinerary", new_itinerary_path,class:"menuLink active"%></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"menuLink active"%></li>
+          </div>
         </ul>
       </div>
       <div class="menu-btn">
@@ -12,8 +14,10 @@
     <% else %>
       <div class="text-menu">
         <ul class="menu">
-          <li><%= link_to "Sign in", new_user_session_path,class:"menuLink active"%></li>
-          <li><%= link_to "Sign up", new_user_registration_path,class:"menuLink active"%></li>
+          <div class="link_burger">
+            <li><%= link_to "Sign in", new_user_session_path,class:"menuLink active"%></li>
+            <li><%= link_to "Sign up", new_user_registration_path,class:"menuLink active"%></li>
+          </div>
         </ul>
       </div>
       <div class="menu-btn">

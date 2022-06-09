@@ -16,9 +16,11 @@
     <div data-mapdisplay-target="cardscontainer">
         <%= render "shared/card_itinerary_show", itinerary: @itinerary %>
         <div class="cards">
-          <% @itinerary.sites.each do |site|%>
-            <%= render "shared/card_site", site: site%>
-          <% end %>
+          <div class="backround-show">
+            <% @itinerary.sites.each do |site|%>
+              <%= render "shared/card_site", site: site%>
+            <% end %>
+          </div>
         </div>
     </div>
 
