@@ -19,7 +19,7 @@ export default class extends Controller {
     this.itinerariesRoutes = await this.#fetchItinerariesRoutes(this.itineraries)
 
     this.#displayRoutes(this.itinerariesRoutes)
-
+    this.map.resize()
     this.#fitMapToItineraries(this.itineraries)
     this.#addFirstSiteMarkersToMap(this.itineraries)
 
