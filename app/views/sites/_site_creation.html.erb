@@ -3,11 +3,19 @@
   <%= f.input :summary %>
   <%= f.input :content %>
   <%= f.input :photo, as: :file %>
-  <%= f.input :stage, collection: 1..6, include_blank: false %>
+  <%= f.input :stage, collection: @itinerary.sites.length+1..@itinerary.sites.length+4, include_blank: false %>
   <%= f.input :location, input_html: { data: { geocoder_target: 'location' }, class: 'd-none' },
                     wrapper_html: { data: { controller: 'geocoder',
-                    geocoder_api_key_value: ENV['MAPBOX_API_KEY'] },
-                    } %>
+                    geocoder_api_key_value: ENV['MAPBOX_API_KEY'] }
+                    }%>
+  <div data-controller='geolocation'>
+    <p>-OR-</p>
+    <p>Get your current location : <a data-action="click->geolocation#getCurrentCoords"><i class="fa-solid fa-location-crosshairs"></i></a></p>
+    <p>-OR-</p>
+    <p>Enter coordinates :</p>
+    <%= f.input :latitude, input_html: { data: { geolocation_target: "latitude" } }%>
+    <%= f.input :longitude, input_html: { data: { geolocation_target: "longitude" } } %>
+  </div>
   <%= f.input :duration_in_minutes, collection: 10..200, include_blank: false %>
   <% if controller.action_name == "new" %>
     <%= f.submit "Create a site", class: "btn-new-site"%>
