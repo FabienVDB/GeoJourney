@@ -10,7 +10,7 @@
                     }%>
   <div data-controller='geolocation'>
     <p>-OR-</p>
-    <p>Get your current location : <a data-action="click->geolocation#getCurrentCoords"><i class="fa-solid fa-location-crosshairs"></i></a></p>
+    <p>Get my current location : <a data-action="click->geolocation#getCurrentCoords"><i class="fa-solid fa-location-crosshairs"></i></a></p>
     <p>-OR-</p>
     <p>Enter coordinates :</p>
     <%= f.input :latitude, input_html: { data: { geolocation_target: "latitude" } }%>
