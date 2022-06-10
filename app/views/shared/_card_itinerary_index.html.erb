@@ -25,4 +25,19 @@
   <div>
     <%= itinerary.summary%>
   </div>
+  <% if controller_name == "users" %>
+    <% if current_user == itinerary.user %>
+      <div class="icones">
+        <%= link_to itinerary_path(itinerary), method: :delete, data: { confirm: "Are you sure ? " } do %>
+          <i class="fa-solid fa-trash-can"></i><h3>Delete itinerary</h3>
+        <% end %>
+        <%= link_to edit_itinerary_path(itinerary) do %>
+          <i class="fa-solid fa-edit"></i><h3>Update itinerary</h3>
+        <% end %>
+        <%= link_to new_itinerary_site_path(itinerary) do%>
+          <i class="fa-solid fa-plus"></i> <h3>Add a site</h3>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
