@@ -16,6 +16,11 @@
 
 puts "Clear sites"
 Site.destroy_all # if Rails.env.development?
+puts "Clear favorites"
+Favorite.destroy_all #  if Rails.env.development?
+puts "Clear itineraries"
+Itinerary.destroy_all #  if Rails.env.development?
+puts "Clear complete"
 puts "Clear itineraries"
 Itinerary.destroy_all #  if Rails.env.development?
 puts "Clear areas"
